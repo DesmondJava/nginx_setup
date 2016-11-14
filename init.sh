@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Setup NGINX and GUNICORN on this machine..."
-echo "Create soft links to the /etc/ path nginx and gunicorn for setup config."
+echo "Create soft links to the /etc/ path nginx for setup config."
 sudo ln -sf ~/web/etc/nginx.conf /etc/nginx/sites-enabled/default
 sudo ln -sf ~/web/etc/hello.py /etc/gunicorn.d/hello.py
 
