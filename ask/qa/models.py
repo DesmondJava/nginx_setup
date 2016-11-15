@@ -3,6 +3,17 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+class QuestionManager(models.Manager):
+
+    def new(self):
+        qs = super(QuestionManager, self).get_queryset()
+        return qs.order_by('-added_at')
+
+    def rating(self):
+        qs = super(QuestionManager, self).get_queryset()
+        return qs.order_by('-rating')
+
+
 # Create your models here.
 class Question(models.Model):
     objects = QuestionManager()
@@ -21,13 +32,5 @@ class Answer(models.Model):
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 
 
-class QuestionManager(models.Manager):
 
-    def new(self):
-        qs = super(QuestionManager, self).get_queryset()
-        return qs.order_by('-added_at')
-
-    def rating(self):
-        qs = super(QuestionManager, self).get_queryset()
-        return qs.order_by('-rating')
 
