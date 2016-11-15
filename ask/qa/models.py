@@ -9,7 +9,7 @@ class QuestionManager(models.Manager):
         qs = super(QuestionManager, self).get_queryset()
         return qs.order_by('-added_at')
 
-    def rating(self):
+    def popular(self):
         qs = super(QuestionManager, self).get_queryset()
         return qs.order_by('-rating')
 
