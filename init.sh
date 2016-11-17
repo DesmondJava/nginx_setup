@@ -17,3 +17,4 @@ echo "Go to the path ~/web/ask"
 cd ~/web/ask
 echo "Run ask application on 0.0.0.0:8000!"
 gunicorn -b 0.0.0.0:8000 ask.wsgi:application &
+echo "FINISH! SUCCESSFULLY"
