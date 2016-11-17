@@ -104,12 +104,10 @@ def popular_page(request):
 
 @require_GET
 def question(request, id):
-    question = get_object_or_404(Question, pk=id)
+    question = get_object_or_404(Question, id=id)
     answers = question.answer_set.all()
     # answers = Answer.objects.filter(question=id)
     return render(request, 'question.html', {
         'question': question,
-        'title': question.title,
-        'text': question.text,
         'answers': answers,
     })
