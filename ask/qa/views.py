@@ -41,7 +41,7 @@ def index(request):
 
 
 @require_GET
-def popular_page(request, page=1):
+def popular_page(request):
     questions = Question.objects.popular()
     try:
         limit = int(request.GET.get('limit', 10))
@@ -50,7 +50,8 @@ def popular_page(request, page=1):
     if limit > 100:
         limit = 0
     try:
-        page = int(page)
+        # page = int(page)
+        page = int(request.GET.get('page', 1))
     except ValueError:
         raise Http404
     paginator = Paginator(questions, limit)
