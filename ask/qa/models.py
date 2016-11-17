@@ -38,7 +38,7 @@ class Question(models.Model):
 class Answer(models.Model):
     text = models.TextField()
     added_at = models.DateTimeField(auto_now_add=True, default=now())
-    question = models.OneToOneField(Question)
+    question = models.OneToOneField(Question, related_name='answer_set')
     author = models.ForeignKey(User, default=1, null=True, on_delete=models.SET_NULL)
 
     def __unicode__(self):
