@@ -48,12 +48,12 @@ def home(request):
 @require_GET
 def popular(request):
     questions = Question.objects.popular()
-    page, paginator = paginate(request, questions)
+    paginator, page = paginate(request, questions)
     paginator.baseurl = '/popular/?page='
     return render(request, 'home.html', {
         'questions': page.object_list,
-        'page': page,
         'paginator': paginator,
+        'page': page,
     })
 
 
