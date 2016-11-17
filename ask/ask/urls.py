@@ -10,10 +10,12 @@ urlpatterns = patterns('qa.views',
                        # url(r'^blog/', include('blog.urls')),
 
                        url(r'^$', 'test'),
+                       url(r'^page(?P<num>[0-9]+)/$', 'page', name='page'),
                        url(r'^login/$', 'test', name='login'),
                        url(r'^signup/$', 'test', name='signup'),
-                       url(r'^question/(?P<id>[0-9]+)/$', 'test', name='question'),
+                       url(r'^question/(?P<id>[0-9]+)/$', 'question', name='question'),
                        url(r'^ask/.*$', 'test', name='ask'),
-                       url(r'^popular/$', 'test', name='popular'),
+                       url(r'^popular/$', 'popular_page', name='popular_page'),
                        url(r'^new/$', 'test', name='new'),
+
                        )

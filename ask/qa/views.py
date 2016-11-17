@@ -1,7 +1,63 @@
-from django.shortcuts import render
+from django.core.paginator import Paginator
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from django.views.decorators.http import require_GET
 
 
 # Create your views here.
+from qa.models import Question, Answer
+
+
+@require_GET
 def test(request, *args, **kwargs):
     return HttpResponse('OK')
+
+
+@require_GET
+def page(request, page="1"):
+    questions = Question.objects.new()
+    limit = request.GET.get('limit', 10)
+    try:
+        page = int(page)
+    except ValueError:
+        page = 1
+    if page > 100:
+        page = 1
+    paginator = Paginator(questions, limit)
+    paginator.baseurl = '/?page='
+    page = paginator.page(page)  # Page
+    return render(request, 'questions.html', {
+        'questions': page.object_list,
+        'paginator': paginator, 'page': page,
+    })
+
+
+@require_GET
+def popular_page(request, page="1"):
+    questions = Question.objects.popular()
+    limit = request.GET.get('limit', 10)
+    try:
+        page = int(page)
+    except ValueError:
+        page = 1
+    if page > 100:
+        page = 1
+    paginator = Paginator(questions, limit)
+    paginator.baseurl = 'popular/?page='
+    page = paginator.page(page)  # Page
+    return render(request, 'questions.html', {
+        'questions': page.object_list,
+        'paginator': paginator, 'page': page,
+    })
+
+
+@require_GET
+def question(request, id):
+    question = get_object_or_404(Question, pk=id)
+    answers = Answer.objects.filter(question=id)
+    return render(request, 'question.html', {
+        'question': question,
+        'title': question.title,
+        'text': question.text,
+        'answers': answers.all()[:],
+    })
