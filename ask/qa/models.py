@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.contrib.auth.models import User
 # from django.urls import reverse
+from django.utils.timezone import now
 
 
 class QuestionManager(models.Manager):
@@ -22,7 +23,7 @@ class Question(models.Model):
     objects = QuestionManager()
     title = models.CharField(max_length=255)
     text = models.TextField()
-    added_at = models.DateTimeField(auto_now_add=True)
+    added_at = models.DateTimeField(auto_now_add=True, default=now())
     rating = models.IntegerField(default=0)
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name='question_author')
     likes = models.ManyToManyField(User, related_name='question_like')
@@ -36,9 +37,9 @@ class Question(models.Model):
 
 class Answer(models.Model):
     text = models.TextField()
-    added_at = models.DateTimeField(auto_now_add=True)
+    added_at = models.DateTimeField(auto_now_add=True, default=now())
     question = models.OneToOneField(Question)
-    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    author = models.ForeignKey(User, default=1, null=True, on_delete=models.SET_NULL)
 
     def __unicode__(self):
         return self.text
