@@ -9,13 +9,12 @@ urlpatterns = patterns('qa.views',
                        # url(r'^$', 'ask.views.home', name='home'),
                        # url(r'^blog/', include('blog.urls')),
 
-                       url(r'^$', 'index', name='index'),
-                       url(r'^page(?P<num>[0-9]+)/$', 'index', name='index'),
+                       url(r'^$', 'home', name='home'),
                        url(r'^login/$', 'test', name='login'),
                        url(r'^signup/$', 'test', name='signup'),
-                       url(r'^question/(?P<id>[0-9]+)/$', 'question', name='question'),
+                       url(r'^question/(?P<id>[0-9]+)/$', 'question_detail', name='question_detail'),
                        url(r'^ask/.*$', 'test', name='ask'),
-                       url(r'^popular/$', 'popular_page', name='popular_page'),
+                       url(r'^popular/$', 'popular', name='popular'),
                        url(r'^new/$', 'test', name='new'),
 
                        )
