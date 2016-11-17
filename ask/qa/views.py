@@ -1,4 +1,5 @@
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage
+from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.views.decorators.http import require_GET
@@ -14,22 +15,46 @@ def test(request, *args, **kwargs):
 
 
 @require_GET
-def page(request, page="1"):
+def index(request):
     questions = Question.objects.new()
-    limit = request.GET.get('limit', 10)
     try:
-        page = int(page)
+        limit = int(request.GET.get('limit', 10))
     except ValueError:
-        page = 1
-    if page > 100:
-        page = 1
+        limit = 10
+    if limit > 100:
+        limit = 0
+    try:
+        page = int(request.GET.get('page', 1))
+    except ValueError:
+        raise Http404
     paginator = Paginator(questions, limit)
-    paginator.baseurl = '/?page='
-    page = paginator.page(page)  # Page
+
+    try:
+        page = paginator.page(page)
+    except EmptyPage:
+        page = paginator.page(paginator.num_pages)
     return render(request, 'questions.html', {
         'questions': page.object_list,
-        'paginator': paginator, 'page': page,
+        'paginator': paginator,
+        'page': page,
     })
+
+
+
+    # limit = request.GET.get('limit', 10)
+    # try:
+    #     page = int(page)
+    # except ValueError:
+    #     page = 1
+    # if page > 100:
+    #     page = 1
+    # paginator = Paginator(questions, limit)
+    # paginator.baseurl = '/?page='
+    # page = paginator.page(page)  # Page
+    # return render(request, 'questions.html', {
+    #     'questions': page.object_list,
+    #     'paginator': paginator, 'page': page,
+    # })
 
 
 @require_GET
