@@ -28,7 +28,7 @@ def index(request):
     except ValueError:
         raise Http404
     paginator = Paginator(questions, limit)
-
+    paginator.baseurl = '/?page='
     try:
         page = paginator.page(page)
     except EmptyPage:
@@ -58,22 +58,45 @@ def index(request):
 
 
 @require_GET
-def popular_page(request, page="1"):
+def popular_page(request, page=1):
     questions = Question.objects.popular()
-    limit = request.GET.get('limit', 10)
     try:
-        page = int(page)
+        limit = int(page)
     except ValueError:
-        page = 1
-    if page > 100:
-        page = 1
+        limit = 10
+    if limit > 100:
+        limit = 0
+    try:
+        page = int(request.GET.get('page', 1))
+    except ValueError:
+        raise Http404
     paginator = Paginator(questions, limit)
     paginator.baseurl = 'popular/?page='
-    page = paginator.page(page)  # Page
+    try:
+        page = paginator.page(page)
+    except EmptyPage:
+        page = paginator.page(paginator.num_pages)
     return render(request, 'questions.html', {
         'questions': page.object_list,
-        'paginator': paginator, 'page': page,
+        'paginator': paginator,
+        'page': page,
     })
+
+    # questions = Question.objects.popular()
+    # limit = request.GET.get('limit', 10)
+    # try:
+    #     page = int(page)
+    # except ValueError:
+    #     page = 1
+    # if page > 100:
+    #     page = 1
+    # paginator = Paginator(questions, limit)
+    # paginator.baseurl = 'popular/?page='
+    # page = paginator.page(page)  # Page
+    # return render(request, 'questions.html', {
+    #     'questions': page.object_list,
+    #     'paginator': paginator, 'page': page,
+    # })
 
 
 @require_GET
