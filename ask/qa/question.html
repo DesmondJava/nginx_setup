@@ -8,7 +8,7 @@
     <p>{{ question.text }}</p>
 
     {% for answer in answers %}
-        <p>{{ answer }}</p>
+        <p>{{ answer.text|linebreaksbr }}</p>
     {% endfor %}
 </body>
 </html>
