@@ -40,6 +40,31 @@ def index(request):
     })
 
 
+@require_GET
+def popular_page(request, page=1):
+    questions = Question.objects.popular()
+    try:
+        limit = int(request.GET.get('limit', 10))
+    except ValueError:
+        limit = 10
+    if limit > 100:
+        limit = 0
+    try:
+        page = int(page)
+    except ValueError:
+        raise Http404
+    paginator = Paginator(questions, limit)
+    paginator.baseurl = '/popular/?page='
+    try:
+        page = paginator.page(page)
+    except EmptyPage:
+        page = paginator.page(paginator.num_pages)
+    return render(request, 'questions.html', {
+        'questions': page.object_list,
+        'paginator': paginator,
+        'page': page,
+    })
+
 
     # limit = request.GET.get('limit', 10)
     # try:
@@ -57,30 +82,7 @@ def index(request):
     # })
 
 
-@require_GET
-def popular_page(request, page=1):
-    questions = Question.objects.popular()
-    try:
-        limit = int(page)
-    except ValueError:
-        limit = 10
-    if limit > 100:
-        limit = 0
-    try:
-        page = int(request.GET.get('page', 1))
-    except ValueError:
-        raise Http404
-    paginator = Paginator(questions, limit)
-    paginator.baseurl = 'popular/?page='
-    try:
-        page = paginator.page(page)
-    except EmptyPage:
-        page = paginator.page(paginator.num_pages)
-    return render(request, 'questions.html', {
-        'questions': page.object_list,
-        'paginator': paginator,
-        'page': page,
-    })
+
 
     # questions = Question.objects.popular()
     # limit = request.GET.get('limit', 10)
