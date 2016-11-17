@@ -111,5 +111,5 @@ def question(request, id):
         'question': question,
         'title': question.title,
         'text': question.text,
-        'answers': answers.all()[:],
+        'answers': answers,
     })
