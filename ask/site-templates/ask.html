@@ -2,22 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>QA</title>
+    <title>Title</title>
+</head>
 <body>
-<a href="/">Home page</a> <br>
-<a href="/popular/">Popular questions</a>
+ <h1>Ask Question</h1>
 
-<h1>{{ question.title }}</h1>
-<p>{{ question.text }}</p>
-
-{% for answer in answers %}
-    <p>{{ answer }}</p>
+{% for e in form.non_field_errors %}
+    <div>{{ e }}</div>
 {% endfor %}
-
-
-<h1>Your answer:</h1>
-<form method="post" action="/answer/">
-{% csrf_token %}
+ 
+<form method="post" action="/ask/">
     <fieldset>
         {% for field in form %}
                 {% if field.errors %}<p>has-error</p>{% endif %}">
@@ -27,7 +21,7 @@
     </fieldset>
 <div>
     <button type="submit">
-    Отправить ответ</button>
+    Сохранить</button>
 </div>
 </form>
 
