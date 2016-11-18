@@ -96,7 +96,7 @@ def answer(request):
             return HttpResponseRedirect(question.get_url())
     else:
         form = AnswerForm()
-    id = form.question.question_id
+    id = request.POST.get("question", "")
     question = get_object_or_404(Question, pk=id)
     answers = question.answer_set.all()
     return render(request, 'question_detail.html', {
