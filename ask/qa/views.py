@@ -59,8 +59,9 @@ def popular(request):
     })
 
 
-@require_GET
 def question_detail(request, id):
+    if request.method == "POST":
+        return render('OK')
     question = get_object_or_404(Question, pk=id)
     answers = question.answer_set.all()
     form = AnswerForm(initial={'question': str(id)})
@@ -93,4 +94,8 @@ def answer(request):
             q_id = answer.question_id
             question = get_object_or_404(Question, pk=q_id)
             return HttpResponseRedirect(question.get_url())
-    return HttpResponseRedirect('/')
+    else:
+        form = AnswerForm()
+    return render(request, 'question_detail.html', {
+        'form': form
+    })
