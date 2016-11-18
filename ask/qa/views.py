@@ -61,7 +61,7 @@ def popular(request):
 
 def question_detail(request, id):
     if request.method == "POST":
-        return render('OK')
+        return HttpResponse('OK')
     question = get_object_or_404(Question, pk=id)
     answers = question.answer_set.all()
     form = AnswerForm(initial={'question': str(id)})
