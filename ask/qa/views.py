@@ -35,8 +35,10 @@ def test(request, *args, **kwargs):
 
 @require_GET
 def home(request):
-    questions = Question.objects.new()
-    paginator, page = paginate(request, questions)
+    qa = Question.objects.all()
+    qa = qa.order_by('-added_at')
+    # questions = Question.objects.new()
+    paginator, page = paginate(request, qa)
     paginator.baseurl = '/?page='
     return render(request, 'home.html', {
         'questions': page.object_list,
