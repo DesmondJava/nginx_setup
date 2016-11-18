@@ -59,7 +59,7 @@ def popular(request):
 
 @require_GET
 def question_detail(request, id):
-    question = get_object_or_404(Question, id=id)
+    question = get_object_or_404(Question, pk=id)
     answers = question.answer_set.all()
     return render(request, 'question_detail.html', {
         'question': question,
