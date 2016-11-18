@@ -13,13 +13,13 @@ class AskForm(forms.Form):
         title = self.cleaned_data['title']
         if title.strip() == '':
             raise forms.ValidationError('Title is empty', code='validation_error')
-        return self.cleaned_data
+        return title
 
     def clean_text(self):
         text = self.cleaned_data['text']
         if text.strip() == '':
             raise forms.ValidationError('Сообщение не корректно', code=12)
-        return self.cleaned_data
+        return text
 
     def save(self):
         # if self._user.is_anonymous():
