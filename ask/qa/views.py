@@ -93,8 +93,4 @@ def answer(request):
             q_id = answer.question_id
             question = get_object_or_404(Question, pk=q_id)
             return HttpResponseRedirect(question.get_url())
-    else:
-        form = AnswerForm()
-    return render(request, 'ask.html', {
-        'form': form
-    })
+    return HttpResponseRedirect('/')

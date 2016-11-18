@@ -44,7 +44,7 @@ class AnswerForm(forms.Form):
     def clean_question(self):
         question = self.cleaned_data['question']
         if question == 0:
-            raise forms.ValidationError(u'Question number incorrect', code='validation_error')
+            raise forms.ValidationError('Question number incorrect', code='validation_error')
         return question
 
     def save(self):
