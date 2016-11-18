@@ -23,9 +23,7 @@ class Question(models.Model):
     rating = models.IntegerField(default=0)
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name='question_author')
     likes = models.ManyToManyField(User, related_name='question_like')
-    #
-    # def get_absolute_url(self):
-    #     return reverse('question', kwargs={"id": self.id})
+
     def get_url(self):
         return "/question/{}/".format(self.id)
 
