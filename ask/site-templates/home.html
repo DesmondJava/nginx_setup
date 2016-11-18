@@ -5,13 +5,13 @@
     <title>QA</title>
 <body>
 
-<a href="/">Home</a> <br>
-<a href="/popular/">Popular</a>
+<a href="/">Home page</a> <br>
+<a href="/popular/">Popular questions</a>
 
 {% if questions %}
 <ul>
 	{% for q in questions %}
-		<li><a href="{{ question.get_absolute_url }}">{{ q.title }}</a></li>
+		<li><a href="{{ q.get_absolute_url }}">{{ q.title }}</a></li>
 	{% endfor %}
 </ul>
 
