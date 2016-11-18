@@ -24,8 +24,11 @@ class Question(models.Model):
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name='question_author')
     likes = models.ManyToManyField(User, related_name='question_like')
 
-    def get_url(self):
-        return "/question/{}/".format(self.id)
+    # def get_url(self):
+    #     return "/question/{}/".format(self.id)
+
+    def get_absolute_url(self):
+        return reverse('question', kwargs={"id": self.id})
 
     def __unicode__(self):
         return self.title
