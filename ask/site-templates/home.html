@@ -11,7 +11,7 @@
 {% if questions %}
 <ul>
 	{% for q in questions %}
-		<li><a href="{{ q.get_absolute_url }}">{{ q.title }}</a></li>
+		<li><a href="{% url 'question' q.id %}">{{ q.title }}</a></li>
 	{% endfor %}
 </ul>
 
