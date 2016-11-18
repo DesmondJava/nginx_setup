@@ -22,10 +22,10 @@ class AskForm(forms.Form):
         return self.cleaned_data
 
     def save(self):
-        if self._user.is_anonymous():
-            self.cleaned_data['author_id'] = 1
-        else:
-            self.cleaned_data['author'] = self._user
+        # if self._user.is_anonymous():
+        #     self.cleaned_data['author_id'] = 1
+        # else:
+        #     self.cleaned_data['author'] = self._user
         question = Question(**self.cleaned_data)
         question.save()
         return question
