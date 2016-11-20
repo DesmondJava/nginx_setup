@@ -128,15 +128,14 @@ def user_signup(request):
 
 
 def user_login(request):
+    next = request.GET.get('next', "")
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
             user = form.save()
             if user is not None:
                 login(request, user)
-                next = request.GET.get('next', "")
-                next2 = request.POST.get('next', "")
-                return HttpResponseRedirect('/a' + next + "-" + next2)
+                return HttpResponseRedirect('/' + next)
     form = LoginForm()
     return render(request, 'login.html', {'form': form})
 
