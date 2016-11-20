@@ -11,7 +11,7 @@ from django.views.decorators.http import require_GET
 
 # Create your views here.
 from qa.forms import AskForm, AnswerForm, SignupForm, LoginForm
-from qa.models import Question, do_login
+from qa.models import Question
 
 
 def paginate(request, qs):
