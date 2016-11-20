@@ -2,6 +2,7 @@
 from datetime import datetime, timedelta
 
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage
 from django.http import Http404
 from django.http import HttpResponseRedirect
@@ -62,6 +63,7 @@ def popular(request):
     })
 
 
+@login_required
 def question_detail(request, id):
     if request.method == "POST":
         return HttpResponse('OK')
@@ -75,6 +77,7 @@ def question_detail(request, id):
     })
 
 
+@login_required
 def ask(request):
     if request.method == "POST":
         form = AskForm(request.POST)
@@ -90,6 +93,7 @@ def ask(request):
     })
 
 
+@login_required
 def answer(request):
     if request.method == "POST":
         form = AnswerForm(request.POST)
