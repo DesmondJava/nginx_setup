@@ -134,7 +134,8 @@ def user_login(request):
             user = form.save()
             if user is not None:
                 login(request, user)
-                return HttpResponseRedirect('/')
+                next = request.GET.get('next', "")
+                return HttpResponseRedirect('/' + next)
     form = LoginForm()
     return render(request, 'login.html', {'form': form})
 
