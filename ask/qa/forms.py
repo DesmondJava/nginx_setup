@@ -1,6 +1,7 @@
 # coding=utf-8
 from django import forms
 from django.contrib.auth import authenticate
+from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import get_object_or_404
 
 from qa.models import Question, Answer, User
@@ -89,9 +90,14 @@ class SignupForm(forms.Form):
         return auth
 
 
-class LoginForm(forms.Form):
-    username = forms.CharField(max_length=100)
-    password = forms.CharField(widget=forms.PasswordInput)
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(label="Username", max_length=30,
+                               widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'username'}))
+    password = forms.CharField(label="Password", max_length=30,
+                               widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'password'}))
+
+    # username = forms.CharField(max_length=100)
+    # password = forms.CharField(widget=forms.PasswordInput)
 
     def clean_username(self):
         username = self.cleaned_data['username']

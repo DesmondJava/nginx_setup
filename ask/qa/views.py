@@ -127,17 +127,17 @@ def user_signup(request):
     return render(request, 'signup.html', {'form': form})
 
 
-def user_login(request):
-    next = request.GET.get('next', "")
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            if user is not None:
-                login(request, user)
-                return HttpResponseRedirect('/' + next)
-    form = LoginForm()
-    return render(request, 'login.html', {'form': form})
+# def user_login(request):
+#     next = request.GET.get('next', "")
+#     if request.method == 'POST':
+#         form = LoginForm(request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             if user is not None:
+#                 login(request, user)
+#                 return HttpResponseRedirect('/' + next)
+#     form = LoginForm()
+#     return render(request, 'login.html', {'form': form})
 
 
 def user_logout(request):
