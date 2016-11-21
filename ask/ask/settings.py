@@ -29,6 +29,10 @@ ALLOWED_HOSTS = []
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 
+STATICFILES_DIRS = [
+os.path.join(BASE_DIR, "static"),
+]
+
 # Application definition
 
 INSTALLED_APPS = (
