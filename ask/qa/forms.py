@@ -80,7 +80,7 @@ class SignupForm(forms.Form):
         email = self.cleaned_data['email']
         if email.strip() == '':
             raise forms.ValidationError('Email is empty')
-        if not "@" in email:
+        if "@" not in email:
             raise forms.ValidationError('Email is not valid!')
         return email
 
