@@ -8,9 +8,9 @@ from qa.models import Question, Answer, User
 
 
 class AskForm(forms.Form):
-    title = forms.CharField(label="Username", max_length=30,
+    title = forms.CharField(label="Title", max_length=30,
                             widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'title'}))
-    text = forms.CharField(label="Username", max_length=30,
+    text = forms.CharField(label="Question", max_length=30,
                            widget=forms.Textarea(attrs={'class': 'form-control', 'name': 'text'}))
 
     def clean_title(self):
