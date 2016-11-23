@@ -1,43 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div style="text-align: center;" class="text-center text-danger">
-{#{% if form.username.errors %}#}
-{#    <p  class="text-center text-danger">{{ form.username.errors }}</p>#}
-{#{% endif %}#}
-{% if form.email.errors %}
-    <p  class="text-center text-danger">{{ form.email.errors }}</p>
-{% endif %}
-
-{% if form.password.errors %}
-    <p  class="text-center text-danger">{{ form.password.errors }}</p>
-{% endif %}
-    </div>
-
-
-
-{# <h1>Sign Up</h1>#}
-{#  {% for e in form.non_field_errors %}#}
-{#    <div class="alert">{{ e }}</div>#}
-{#  {% endfor %}#}
-{#  <div class="form">#}
-{#    <form method="post" action="/signup/">#}
-{#      {% csrf_token %}#}
-{#        {% for field in form %}#}
-{#          <div class="form-group{% if field.errors %} alert{% endif %}">#}
-{#            <div class="form-label">#}
-{#              {{ field.label }}#}
-{#            </div>#}
-{#            <div class="form-field">#}
-{#              {{ field }}#}
-{#            </div>#}
-{#            {{ field.errors }}#}
-{#          </div>#}
-{#        {% endfor %}#}
-{#      <button type="submit" class="btn">Sign up!</button>#}
-{#    </form>#}
-{#  </div>#}
-
 
     <div class="container">
     <div class="row">
@@ -47,27 +10,9 @@
                     <h3 class="panel-title">Sign Up</h3>
                 </div>
                 <div class="panel-body">
+
                     <form method="post" action="/signup/">
                     {% csrf_token %}
-{##}
-{#                        <p class="bs-component">#}
-{#                            {% for field in form %}#}
-{#                              <div class="form-group{% if field.errors %} alert{% endif %}">#}
-{#                                <div class="form-label">#}
-{#                                  {{ field.label }}#}
-{#                                </div>#}
-{#                                <div class="form-field">#}
-{#                                  {{ field }}#}
-{#                                    {{ field.errors }}#}
-{#                                </div>#}
-{#                              </div>#}
-{#                            {% endfor %}#}
-{#                        </p>#}
-{#                        <p class="bs-component">#}
-{#                            <div style="text-align: center;">#}
-{#                                <input class="btn btn-success btn-sm" type="submit" value="Signup" />#}
-{#                            </div>#}
-{#                        </p>#}
                         <p class="bs-component">
                             <table>
                                 <tr>
@@ -76,18 +21,32 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                    {% if form.username.errors %}
-                                         {{ form.username.errors }}
-                                    {% endif %}
+                                        {% if form.username.errors %}
+                                             {{ form.username.errors }}
+                                        {% endif %}
                                     </td>
                                 </tr>
                                  <tr>
                                     <td>{{ form.email.label_tag }}</td>
                                     <td>{{ form.email }}</td>
                                 </tr>
+                                 <tr>
+                                    <td colspan="2">
+                                        {% if form.email.errors %}
+                                            {{ form.email.errors }}
+                                        {% endif %}
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td>{{ form.password.label_tag }}</td>
                                     <td>{{ form.password }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        {% if form.password.errors %}
+                                            {{ form.password.errors }}
+                                        {% endif %}
+                                    </td>
                                 </tr>
                             </table>
                         </p>
@@ -96,8 +55,9 @@
                                 <input class="btn btn-success btn-sm" type="submit" value="SignUp" />
                             </div>
                         </p>
-
                     </form>
+
+
                 </div>
             </div>
         </div>
