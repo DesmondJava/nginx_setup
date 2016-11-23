@@ -74,11 +74,13 @@
                                     <td>{{ form.username.label_tag }}</td>
                                     <td>{{ form.username }}</td>
                                 </tr>
-                        <tr>
-                            {% if form.username.errors %}
-    <p  class="text-center text-danger">{{ form.username.errors }}</p>
-{% endif %}
-                        </tr>
+                                <tr>
+                                    <td colspan="2">
+                                    {% if form.username.errors %}
+                                         {{ form.username.errors }}
+                                    {% endif %}
+                                    </td>
+                                </tr>
                                  <tr>
                                     <td>{{ form.email.label_tag }}</td>
                                     <td>{{ form.email }}</td>
