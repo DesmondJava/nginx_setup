@@ -71,7 +71,7 @@ class SignupForm(forms.Form):
         username = self.cleaned_data['username']
         if username.strip() == '':
             raise forms.ValidationError('Username is empty', code='validation_error')
-        if User.objects.exclude(pk=self.instance.pk).filter(username=username).exists():
+        if User.objects.filter(username=username).exists():
             raise forms.ValidationError('Username "%s" is already in use.' % username)
         return username
 
