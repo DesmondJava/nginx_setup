@@ -33,15 +33,4 @@
 </ul></nav>
 
 {% endif %}
-
-                      {% block javascript %}
-
-
-<script>
-{% if user.is_authenticated %}
-of {{ user.username }}
-{% endif %}
-</script>
-
-{% endblock %}
 {% endblock %}
