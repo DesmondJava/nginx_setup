@@ -2,9 +2,9 @@
 
 {% block content %}
     <div style="text-align: center;" class="text-center text-danger">
-{% if form.username.errors %}
-    <p  class="text-center text-danger">{{ form.username.errors }}</p>
-{% endif %}
+{#{% if form.username.errors %}#}
+{#    <p  class="text-center text-danger">{{ form.username.errors }}</p>#}
+{#{% endif %}#}
 {% if form.email.errors %}
     <p  class="text-center text-danger">{{ form.email.errors }}</p>
 {% endif %}
@@ -74,6 +74,11 @@
                                     <td>{{ form.username.label_tag }}</td>
                                     <td>{{ form.username }}</td>
                                 </tr>
+                        <tr>
+                            {% if form.username.errors %}
+    <p  class="text-center text-danger">{{ form.username.errors }}</p>
+{% endif %}
+                        </tr>
                                  <tr>
                                     <td>{{ form.email.label_tag }}</td>
                                     <td>{{ form.email }}</td>
