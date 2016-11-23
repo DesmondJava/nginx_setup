@@ -61,14 +61,18 @@ class AnswerForm(forms.Form):
 
 
 class SignupForm(forms.Form):
-    username = forms.CharField(max_length=100)
+    username = forms.CharField(label="Username", max_length=30,
+                               widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'username'}))
     email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    password = forms.CharField(label="Password", max_length=30,
+                               widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'password'}))
 
     def clean_username(self):
         username = self.cleaned_data['username']
         if username.strip() == '':
             raise forms.ValidationError('Username is empty', code='validation_error')
+        if User.objects.exclude(pk=self.instance.pk).filter(username=username).exists():
+            raise forms.ValidationError('Username "%s" is already in use.' % username)
         return username
 
     def clean_email(self):
