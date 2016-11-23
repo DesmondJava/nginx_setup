@@ -39,46 +39,46 @@
                 <div class="panel-body">
                     <form method="post" action="/signup/">
                     {% csrf_token %}
-{##}
-{#                        <p class="bs-component">#}
-{#                            {% for field in form %}#}
-{#                              <div class="form-group{% if field.errors %} alert{% endif %}">#}
-{#                                <div class="form-label">#}
-{#                                  {{ field.label }}#}
-{#                                </div>#}
-{#                                <div class="form-field">#}
-{#                                  {{ field }}#}
-{#                                </div>#}
-{#                                {{ field.errors }}#}
-{#                              </div>#}
-{#                            {% endfor %}#}
-{#                        </p>#}
-{#                        <p class="bs-component">#}
-{#                            <div style="text-align: center;">#}
-{#                                <input class="btn btn-success btn-sm" type="submit" value="Signup" />#}
-{#                            </div>#}
-{#                        </p>#}
+
                         <p class="bs-component">
-                            <table>
-                                <tr>
-                                    <td>{{ form.username.label_tag }}</td>
-                                    <td>{{ form.username }}</td>
-                                </tr>
-                                 <tr>
-                                    <td>{{ form.email.label_tag }}</td>
-                                    <td>{{ form.email }}</td>
-                                </tr>
-                                <tr>
-                                    <td>{{ form.password.label_tag }}</td>
-                                    <td>{{ form.password }}</td>
-                                </tr>
-                            </table>
+                            {% for field in form %}
+                              <div class="form-group{% if field.errors %} alert{% endif %}">
+                                <div class="form-label">
+                                  {{ field.label }}
+                                </div>
+                                <div class="form-field">
+                                  {{ field }}
+                                </div>
+                                {{ field.errors }}
+                              </div>
+                            {% endfor %}
                         </p>
                         <p class="bs-component">
                             <div style="text-align: center;">
-                                <input class="btn btn-success btn-sm" type="submit" value="SignUp" />
+                                <input class="btn btn-success btn-sm" type="submit" value="Signup" />
                             </div>
                         </p>
+{#                        <p class="bs-component">#}
+{#                            <table>#}
+{#                                <tr>#}
+{#                                    <td>{{ form.username.label_tag }}</td>#}
+{#                                    <td>{{ form.username }}</td>#}
+{#                                </tr>#}
+{#                                 <tr>#}
+{#                                    <td>{{ form.email.label_tag }}</td>#}
+{#                                    <td>{{ form.email }}</td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td>{{ form.password.label_tag }}</td>#}
+{#                                    <td>{{ form.password }}</td>#}
+{#                                </tr>#}
+{#                            </table>#}
+{#                        </p>#}
+{#                        <p class="bs-component">#}
+{#                            <div style="text-align: center;">#}
+{#                                <input class="btn btn-success btn-sm" type="submit" value="SignUp" />#}
+{#                            </div>#}
+{#                        </p>#}
 
                     </form>
                 </div>
