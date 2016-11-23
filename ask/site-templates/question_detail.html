@@ -5,14 +5,17 @@
 
 <div class="container">
 <h2 class="text-center">{{ question.title }}</h2>
+<hr>
+<br>
 <p>{{ question.text }}</p>
+<br>
+<hr>
 
 
-
-<table class="table">
+<table class="table table-striped">
     <thead>
       <tr>
-        <th>Answers</th>
+        <th>Answers:</th>
       </tr>
     </thead>
     <tbody>
@@ -33,13 +36,13 @@
                         <p class="bs-component">
                             <table>
                                 <tr>
-                                    <td>{{ form.answer.label_tag }}</td>
-                                    <td>{{ form.answer }}</td>
+                                    <td>{{ form.text.label_tag }}</td>
+                                    <td>{{ form.text }}</td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        {% if form.answer.errors %}
-                                             {{ form.answer.errors }}
+                                        {% if form.text.errors %}
+                                             {{ form.text.errors }}
                                         {% endif %}
                                     </td>
                                 </tr>
