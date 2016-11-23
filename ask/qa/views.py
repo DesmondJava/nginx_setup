@@ -105,7 +105,7 @@ def answer(request):
             return HttpResponseRedirect(question.get_url())
     else:
         form = AnswerForm()
-    id = request.GET.get("question", "")         # testing this moment if change on GET method
+    id = request.GET.get("question", 1)         # testing this moment if change on GET method
     question = get_object_or_404(Question, pk=id)
     answers = question.answer_set.all()
     return render(request, 'question_detail.html', {
