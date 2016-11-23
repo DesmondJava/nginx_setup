@@ -79,7 +79,9 @@ class SignupForm(forms.Form):
     def clean_email(self):
         email = self.cleaned_data['email']
         if email.strip() == '':
-            raise forms.ValidationError('Email is empty', code='validation_error')
+            raise forms.ValidationError('Email is empty')
+        if not "@" in email:
+            raise forms.ValidationError('Email is not valid!')
         return email
 
     def clean_password(self):
