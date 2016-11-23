@@ -2,7 +2,7 @@
 
 {% block content %}
     {% if form.errors %}
-        <p  class="text-center, text-danger">Your username and password didn't match. Please try again.</p>
+        <p  class="text-center text-danger">Your username and password didn't match. Please try again.</p>
     {% endif %}
 
 {% if next %}
@@ -32,11 +32,16 @@
                                 <tr>
                                     <td>{{ form.username.label_tag }}</td>
                                     <td>{{ form.username }}</td>
-                                    <td>{{ form.username.errors }}</td>
+                                </tr>
+                                <tr>
+                                <td>{{ form.username.errors }}</td>
                                 </tr>
                                 <tr>
                                     <td>{{ form.password.label_tag }}</td>
                                     <td>{{ form.password }}</td>
+                                </tr>
+                                 <tr>
+                                <td>{{ form.password.errors }}</td>
                                 </tr>
                             </table>
                         </p>
