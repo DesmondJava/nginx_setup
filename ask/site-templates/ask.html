@@ -1,25 +1,68 @@
 {% extends 'base.html' %}
 
 {% block content %}
- <h1>Ask Question</h1>
 
-{% for e in form.non_field_errors %}
-    <div>{{ e }}</div>
-{% endfor %}
 
-<form method="post" action="/ask/">
-    {% csrf_token %}
-    <fieldset>
-        {% for field in form %}
-                {% if field.errors %}<p>has-error</p>{% endif %}">
-                <label>{{ field.label }}</label>
-                <div>{{ field }}</div>
-        {% endfor %}
-    </fieldset>
-<div>
-    <button type="submit">
-    Сохранить</button>
+<div class="container">
+<h2 class="text-center">Ask Question</h2>
 </div>
-</form>
+
+<div class="panel-body">
+                    <form method="post" action="/ask/">
+                    {% csrf_token %}
+
+                        <p class="bs-component">
+                            <table>
+                                <tr>
+                                    <td>{{ form.title.label_tag }}</td>
+                                    <td>{{ form.title }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        {% if form.title.errors %}
+                                             {{ form.title.errors }}
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{ form.text.label_tag }}</td>
+                                    <td>{{ form.text }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        {% if form.text.errors %}
+                                             {{ form.text.errors }}
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            </table>
+                        </p>
+                        <p class="bs-component">
+                            <div style="text-align: center;">
+                                <input class="btn btn-success btn-sm" type="submit" value="Submit" />
+                            </div>
+                        </p>
+                    </form>
+                </div>
+
+
+{#{% for e in form.non_field_errors %}#}
+{#    <div>{{ e }}</div>#}
+{#{% endfor %}#}
+{##}
+{#<form method="post" action="/ask/">#}
+{#    {% csrf_token %}#}
+{#    <fieldset>#}
+{#        {% for field in form %}#}
+{#                {% if field.errors %}<p>has-error</p>{% endif %}">#}
+{#                <label>{{ field.label }}</label>#}
+{#                <div>{{ field }}</div>#}
+{#        {% endfor %}#}
+{#    </fieldset>#}
+{#<div>#}
+{#    <button type="submit">#}
+{#    Сохранить</button>#}
+{#</div>#}
+{#</form>#}
 
 {% endblock %}
