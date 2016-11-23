@@ -2,7 +2,7 @@
 
 {% block content %}
 {% if form.errors %}
-    <p  class="text-center text-danger">Your username and password didn't match. Please try again.</p>
+    <p  class="text-center text-danger">Please, check fields and fix them. Thank you!</p>
 {% endif %}
 
 
@@ -47,7 +47,8 @@
                                   {{ field.label }}
                                 </div>
                                 <div class="form-field">
-                                  {{ field }} {{ field.errors }}
+                                  {{ field }}
+{#                                    {{ field.errors }}#}
                                 </div>
                               </div>
                             {% endfor %}
