@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div style="text-align: center;" class="text-center text-danger">
 {% if form.username.errors %}
     <p  class="text-center text-danger">{{ form.username.errors }}</p>
 {% endif %}
 {% if form.email.errors %}
-    <p  class="text-center text-danger">Please, check fields and fix them. Thank you!</p>
+    <p  class="text-center text-danger">{{ form.email.errors }}</p>
 {% endif %}
 
 {% if form.password.errors %}
-    <p  class="text-center text-danger">Please, check fields and fix them. Thank you!</p>
+    <p  class="text-center text-danger">{{ form.password.errors }}</p>
 {% endif %}
+    </div>
 
 
 
