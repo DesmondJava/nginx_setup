@@ -66,7 +66,7 @@ class SignupForm(forms.Form):
     email = forms.CharField(label="Email", max_length=100,
                             widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'password'}))
     password = forms.CharField(label="Password", max_length=30,
-                               widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'password'}))
+                               widget=forms.PasswordInput(attrs={'class': 'form-control', 'name': 'password'}))
 
     def clean_username(self):
         username = self.cleaned_data['username']
