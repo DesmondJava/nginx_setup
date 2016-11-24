@@ -8,6 +8,7 @@
 <hr>
 <br>
 <p>{{ question.text }}</p>
+<p>Published {{ question.added_at }} by {{ question.author }}</p>
 <br>
 <hr>
 
@@ -52,7 +53,7 @@
                                 <input class="btn btn-success btn-sm" type="submit" value="Submit" />
                             </div>
                         </p>
-{#                        <input type="hidden" name="id_question" value="{{ id_question }}" />#}
+                        <input type="hidden" name="question" value="{{ id_question }}" />
                     </form>
                 </div>
 </div>
