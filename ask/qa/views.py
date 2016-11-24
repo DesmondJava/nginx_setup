@@ -74,6 +74,7 @@ def question_detail(request, id):
         'question': question,
         'answers': answers,
         'form': form,
+        'id_question': id
     })
 
 
@@ -94,7 +95,7 @@ def ask(request):
 
 
 @login_required
-def answer(request):
+def answer(request, id):
     if request.method == "POST":
         form = AnswerForm(request.POST)
         if form.is_valid():
@@ -103,17 +104,15 @@ def answer(request):
             q_id = answer.question_id
             question = get_object_or_404(Question, pk=q_id)
             return HttpResponseRedirect(question.get_url())
-    else:
-        form = AnswerForm()
-    id1 = form.question
-    id = request.GET.get("question", id1)         # testing this moment if change on GET method
-    question = get_object_or_404(Question, pk=id)
-    answers = question.answer_set.all()
-    return render(request, 'question_detail.html', {
-        'form': form,
-        'question': question,
-        'answers': answers,
-    })
+        else:
+            # form = AnswerForm()
+            question = get_object_or_404(Question, pk=id)
+            answers = question.answer_set.all()
+            return render(request, 'question_detail.html', {
+                'form': form,
+                'question': question,
+                'answers': answers,
+            })
 
 
 def user_signup(request):
