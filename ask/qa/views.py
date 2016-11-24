@@ -74,7 +74,7 @@ def question_detail(request, id):
         'question': question,
         'answers': answers,
         'form': form,
-        'id_question': id
+        # 'id_question': id
     })
 
 
