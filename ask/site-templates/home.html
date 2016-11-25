@@ -29,11 +29,9 @@
            <td>{{ question.rating }}</td>
            <td>{{ question.author }}</td>
             <script type="text/javascript">
-            jQuery(document).ready(function($) {
-                $(".clickable-row").click(function() {
-                    window.location = $(this).data("href");
-                });
-            });
+            $("tr").click(function() {
+  window.location.href = $(this).find("a").attr("href");
+});
         </script>
         </tr>
     {% endfor %}
