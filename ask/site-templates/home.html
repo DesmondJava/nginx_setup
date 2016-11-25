@@ -31,7 +31,7 @@
             <script type="text/javascript">
             jQuery(document).ready(function($) {
                 $(".clickable-row").click(function() {
-                    window.document.location = $(this).data("href");
+                    window.location = $(this).data("href");
                 });
             });
         </script>
@@ -41,7 +41,6 @@
   </table>
 
 
-});
 {#{% endif %}    #}
 
 {#{% if questions %}#}
@@ -51,7 +50,7 @@
 {#	{% endfor %}#}
 {#</ul>#}
 
-<nav><ul class="pagination center-block">
+<nav><ul class="pagination center-block glyphicon-align-center text-center">
     {% for p in paginator.page_range %}
         {% if p == page.number %}
             <li class="active">
