@@ -1,15 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% if form.errors %}
-        <p  class="text-center text-danger">Your username and password didn't match. Please try again.</p>
-    {% endif %}
+
+
+{% if form.errors %}
+    <div class="alert alert-dismissible alert-danger">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <p>Your username and password didn't match. Please try again.</p>
+    </div>
+{% endif %}
 
 {% if next %}
     {% if user.is_authenticated %}
 
-    <p class="text-center">Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
+
+        <div class="alert alert-dismissible alert-warning">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <p class="text-center">Your account doesn't have access to this page. To proceed,
+            please login with an account that has access.</p>
+        </div>
     {% else %}
 
 <p class="text-center">Please login to see this page.</p>
