@@ -23,5 +23,5 @@ urlpatterns = patterns('qa.views',
                        url(r'^answer/(?P<id>[0-9]+)/$', 'answer', name='answer'),
                        url(r'^popular/$', 'popular', name='popular'),
                        url(r'^new/$', 'home', name='home'),
-
+                       url(r'^rating/$', 'rating', name='rating'),
                        )

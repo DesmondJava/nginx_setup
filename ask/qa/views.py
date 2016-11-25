@@ -1,37 +1,16 @@
 # coding=utf-8
-from datetime import datetime, timedelta
 
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
-from django.core.paginator import Paginator, EmptyPage
-from django.http import Http404
+from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse
 from django.views.decorators.http import require_GET
 
-# Create your views here.
 from qa.forms import AskForm, AnswerForm, SignupForm
 from qa.models import Question
-
-
-def paginate(request, qs):
-    try:
-        limit = int(request.GET.get('limit', 10))
-    except ValueError:
-        limit = 10
-    if limit > 100:
-        limit = 10
-    try:
-        page = int(request.GET.get('page', 1))
-    except ValueError:
-        raise Http404
-    paginator = Paginator(qs, limit)
-    try:
-        page = paginator.page(page)
-    except EmptyPage:
-        page = paginator.page(paginator.num_pages)
-    return paginator, page
+from qa.utils.ajax import HttpResponseAjax, HttpResponseAjaxError, login_required_ajax
+from qa.utils.viewhelpers import paginate
 
 
 @require_GET
@@ -74,7 +53,6 @@ def question_detail(request, id):
         'question': question,
         'answers': answers,
         'form': form,
-        # 'id_question': id
     })
 
 
@@ -115,6 +93,20 @@ def answer(request, id):
             })
 
 
+@login_required_ajax
+def rating(request):
+    if request.method == 'GET':
+        if 1 == 1:
+            question = get_object_or_404(Question, pk=1)
+            question.rating += 1
+            return HttpResponseAjax(comment_id="success")
+        else:
+            return HttpResponseAjaxError(
+                code="bad_params",
+                message="test",
+            )
+
+
 def user_signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
@@ -126,6 +118,11 @@ def user_signup(request):
     else:
         form = SignupForm()
     return render(request, 'signup.html', {'form': form})
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('login')
 
 
 # def user_login(request):
@@ -140,7 +137,3 @@ def user_signup(request):
 #     form = LoginForm()
 #     return render(request, 'login.html', {'form': form})
 
-
-def user_logout(request):
-    logout(request)
-    return redirect('login')

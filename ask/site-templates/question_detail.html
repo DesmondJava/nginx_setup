@@ -10,6 +10,23 @@
     <br>
     <button href="#" data-toggle="tooltip" title="Increase rating of this question" class="btn btn-primary btn-xs">+1</button>
     <button href="#" data-toggle="tooltip" title="Decrease rating of this question" class="btn btn-primary btn-xs">-1</button>
+
+    <script>
+    $.ajax({
+        url: '/rating/',
+        type: 'POST',
+        data: { question_id: 12, boolean: 'true' }
+    }).success(function(data) {
+        if (data.status == 'ok') {
+            console.log(data.comment_id);
+        }
+    }).error(function() {
+        console.log('http error')
+    });
+    </script>
+
+
+
     <p class="text-right">
         <strong>Author:</strong> {{ question.author }} <br>
         <strong>Published at:</strong> {{ question.added_at|date:'Y-m-d H:i' }}
