@@ -23,21 +23,23 @@
     </thead>
     <tbody>
     {% for question in questions %}
-        <tr class="clickable-row">
+        <tr class="clickable-row" data-href="{{ question.get_url }}">
            <td><a href="{{ question.get_url }}">{{ question }}</a></td>
            <td>{{ question.added_at }}</td>
            <td>{{ question.rating }}</td>
            <td>{{ question.author }}</td>
-            <script type="text/javascript">
-            $("tr").click(function() {
-  window.location.href = $(this).find("a").attr("href");
-});
-        </script>
+
         </tr>
     {% endfor %}
     </tbody>
   </table>
-
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+        </script>
 
 {#{% endif %}    #}
 
@@ -48,7 +50,7 @@
 {#	{% endfor %}#}
 {#</ul>#}
 
-<nav><ul class="pagination center-block glyphicon-align-center text-center">
+<nav class="center-block"><ul class="pagination">
     {% for p in paginator.page_range %}
         {% if p == page.number %}
             <li class="active">
