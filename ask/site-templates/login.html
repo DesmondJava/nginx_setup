@@ -3,12 +3,12 @@
 {% block content %}
 
 
-{% if form.errors %}
-    <div class="alert alert-dismissible alert-danger">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <p>Your username and password didn't match. Please try again.</p>
-    </div>
-{% endif %}
+    {% if form.errors %}
+        <div class="alert alert-dismissible alert-danger">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <p class="text-center">Your username and password didn't match. Please try again.</p>
+        </div>
+    {% endif %}
 
 {% if next %}
     {% if user.is_authenticated %}
@@ -21,9 +21,15 @@
         </div>
     {% else %}
 
-<p class="text-center">Please login to see this page.</p>
+        <div class="alert alert-dismissible alert-warning">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <p class="text-center">Please login to see this page.</p>
+        </div>
+
     {% endif %}
 {% endif %}
+
+
 
 <div class="container">
     <div class="row">
