@@ -27,7 +27,7 @@ def login_required_ajax(view):
         elif request.is_ajax():
             return HttpResponseAjaxError(
                 code="no_auth",
-                message='Требуется авторизация',
+                message='You should be authorized',
             )
         else:
             redirect('/login/?continue=' + request.get_full_path())
