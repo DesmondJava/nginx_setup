@@ -24,8 +24,8 @@
     </thead>
     <tbody>
     {% for question in questions %}
-        <tr class="table-row" onclick="window.document.location='{{ question.get_url }}';" data-href="{{ question.get_url }}">
-           <td class="col-md-6"><a href="{{ question.get_url }}">{{ question }}</a></td>
+        <tr class="table-row" onclick="window.document.location='{{ question.get_url }}';" style="cursor: pointer;" data-href="{{ question.get_url }}">
+           <td class="col-md-6">{{ question }}</td>
            <td class="col-md-3 text-center">{{ question.added_at|date:'Y-m-d H:i' }}</td>
            <td class="col-md-1 text-center">{{ question.rating }}</td>
            <td class="col-md-2 text-center">{{ question.author }}</td>
@@ -34,15 +34,6 @@
     {% endfor %}
     </tbody>
   </table>
-<script>
-jQuery(document).ready(function($) {
-    $(".table-row").click(function() {
-        window.document.location = $(this).data("href");
-    });
-});
-        alert( 'Привет, Мир!' );
-
-</script>
 
 {#{% endif %}    #}
 
