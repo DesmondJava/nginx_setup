@@ -112,24 +112,24 @@ class SignupForm(forms.Form):
         return auth
 
 
-# class LoginForm(AuthenticationForm):
-#     username = forms.CharField(label="Username", max_length=30,
-#                                widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'username'}))
-#     password = forms.CharField(label="Password", max_length=30,
-#                                widget=forms.PasswordInput(attrs={'class': 'form-control', 'name': 'password'}))
-#
-#     def clean_username(self):
-#         username = self.cleaned_data['username']
-#         if username.strip() == '':
-#             raise forms.ValidationError('Username is empty', code='validation_error')
-#         return username
-#
-#     def clean_password(self):
-#         password = self.cleaned_data['password']
-#         if password.strip() == '':
-#             raise forms.ValidationError('Password is empty', code='validation_error')
-#         return password
-#
-#     def save(self):
-#         user = authenticate(**self.cleaned_data)
-#         return user
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(label="Username", max_length=30,
+                               widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'username'}))
+    password = forms.CharField(label="Password", max_length=30,
+                               widget=forms.PasswordInput(attrs={'class': 'form-control', 'name': 'password'}))
+
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        if username.strip() == '':
+            raise forms.ValidationError('Username is empty', code='validation_error')
+        return username
+
+    def clean_password(self):
+        password = self.cleaned_data['password']
+        if password.strip() == '':
+            raise forms.ValidationError('Password is empty', code='validation_error')
+        return password
+
+    def save(self):
+        user = authenticate(**self.cleaned_data)
+        return user
