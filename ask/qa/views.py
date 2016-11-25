@@ -95,16 +95,31 @@ def answer(request, id):
 
 @login_required_ajax
 def rating(request):
-    if request.method == 'GET':
-        if 1 == 1:
-            question = get_object_or_404(Question, pk=1)
+    if request.method == 'POST':
+        changing = request.POST.get('changing')
+        question_id = request.POST.get('question_123')
+        question = get_object_or_404(Question, pk=question_id)
+        user = request.user
+        is_already_give = Question.objects.filter(likes=user).count()
+        if not is_already_give == 0:
+            return HttpResponseAjaxError(
+                code="bad_params",
+                message="you already give, is_already_give={0}, user={1}, question={2}".format(is_already_give, user.username, question_id),
+            )
+        if changing == 'plus':
             question.rating += 1
+            question.likes.add(user)
             question.save()
-            return HttpResponseAjax(comment_id="success")
+            return HttpResponseAjax(comment_id="success, is_already_give={0}, user={1}, question={2}".format(is_already_give, user.username, question_id))
+        elif changing == 'minus':
+            question.rating -= 1
+            question.likes.add(user)
+            question.save()
+            return HttpResponseAjax(comment_id="success, is_already_give={0}, user={1}, question={2}".format(is_already_give, user.username, question_id))
         else:
             return HttpResponseAjaxError(
                 code="bad_params",
-                message="test",
+                message="test, is_already_give={0}, user={1}, question={2}".format(is_already_give, user.username, question_id),
             )
 
 
