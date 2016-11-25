@@ -12,7 +12,7 @@
 <br>
 <hr>
 
-
+{% if answer in answers %}
 <table class="table table-striped">
     <thead>
       <tr>
@@ -27,6 +27,7 @@
     {% endfor %}
     </tbody>
   </table>
+{% endif %}
 
 
 <h3>Your could write your answer:</h3>
