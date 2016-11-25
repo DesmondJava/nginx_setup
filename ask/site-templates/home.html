@@ -10,7 +10,6 @@
                 based and I chose Bootstrap framework how frontend (UI based)</p>
         </div>
     </div>
-</div>
 
 {% if questions %}
 <table class="table table-striped">
@@ -24,15 +23,22 @@
     </thead>
     <tbody>
     {% for question in questions %}
-        <tr>
+        <tr class="clickable-row">
            <td><a href="{{ question.get_url }}">{{ question }}</a></td>
            <td>{{ question.added_at }}</td>
            <td>{{ question.rating }}</td>
            <td>{{ question.author }}</td>
+            jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("{{ question.get_url }}");
+    });
         </tr>
     {% endfor %}
     </tbody>
   </table>
+
+
+});
 {#{% endif %}    #}
 
 {#{% if questions %}#}
@@ -54,6 +60,7 @@
         </li>
     {% endfor %}
 </ul></nav>
+</div>
 
 {% endif %}
 {% endblock %}
