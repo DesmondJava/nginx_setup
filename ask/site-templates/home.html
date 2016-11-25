@@ -31,10 +31,10 @@ $(document).ready(function($) {
     <tbody>
     {% for question in questions %}
         <tr class="table-row" data-href="{{ question.get_url }}">
-           <td><a href="{{ question.get_url }}">{{ question }}</a></td>
-           <td>{{ question.added_at }}</td>
-           <td>{{ question.rating }}</td>
-           <td>{{ question.author }}</td>
+           <td class="col-md-6"><a href="{{ question.get_url }}">{{ question }}</a></td>
+           <td class="col-md-3">{{ question.added_at }}</td>
+           <td class="col-md-1">{{ question.rating }}</td>
+           <td class="col-md-2">{{ question.author }}</td>
 
         </tr>
     {% endfor %}
