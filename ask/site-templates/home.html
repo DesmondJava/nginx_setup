@@ -11,52 +11,43 @@
         </div>
     </div>
 
+    {% if questions %}
+    <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+              <th class="col-md-6">Title</th>
+              <th class="col-md-6 text-center">Date</th>
+              <th class="col-md-1 text-center">Reputation</th>
+              <th class="col-md-2 text-center">Author</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for question in questions %}
+            <tr class="table-row" onclick="window.document.location='{{ question.get_url }}';" style="cursor: pointer;" data-href="{{ question.get_url }}">
+               <td class="col-md-6"><a href="{{ question.get_url }}" style="text-decoration: none">{{ question }}</a></td>
+               <td class="col-md-3 text-center">{{ question.added_at|date:'Y-m-d H:i' }}</td>
+               <td class="col-md-1 text-center">{{ question.rating }}</td>
+               <td class="col-md-2 text-center">{{ question.author }}</td>
 
-{% if questions %}
-<table class="table table-striped table-hover">
-    <thead>
-      <tr>
-          <th class="col-md-6">Title</th>
-          <th class="col-md-6 text-center">Date</th>
-          <th class="col-md-1 text-center">Reputation</th>
-          <th class="col-md-2 text-center">Author</th>
-      </tr>
-    </thead>
-    <tbody>
-    {% for question in questions %}
-        <tr class="table-row" onclick="window.document.location='{{ question.get_url }}';" style="cursor: pointer;" data-href="{{ question.get_url }}">
-           <td class="col-md-6"><a href="{{ question.get_url }}" style="text-decoration: none">{{ question }}</a></td>
-           <td class="col-md-3 text-center">{{ question.added_at|date:'Y-m-d H:i' }}</td>
-           <td class="col-md-1 text-center">{{ question.rating }}</td>
-           <td class="col-md-2 text-center">{{ question.author }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-        </tr>
-    {% endfor %}
-    </tbody>
-  </table>
-
-{#{% endif %}    #}
-
-{#{% if questions %}#}
-{#<ul>#}
-{#	{% for q in questions %}#}
-{#		<li><a href="{{ q.get_url }}">{{ q }}</a></li>#}
-{#	{% endfor %}#}
-{#</ul>#}
-
-<nav class="center-block text-center"><ul class="pagination">
-    {% for p in paginator.page_range %}
-        {% if p == page.number %}
-            <li class="active">
-        {% else %}
-            <li>
-        {% endif %}
-            <a href="{{ paginator.baseurl }}{{ p }}">
-            {{ p }}</a>
-        </li>
-    {% endfor %}
-</ul></nav>
+    <nav class="center-block text-center">
+        <ul class="pagination">
+        {% for p in paginator.page_range %}
+            {% if p == page.number %}
+                <li class="active">
+            {% else %}
+                <li>
+            {% endif %}
+                <a href="{{ paginator.baseurl }}{{ p }}">
+                {{ p }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
+    {% endif %}
 </div>
-
-{% endif %}
 {% endblock %}
