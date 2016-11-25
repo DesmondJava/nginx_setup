@@ -11,23 +11,11 @@
         </div>
     </div>
 <script>
-    alert( 'Привет, Мир!' );
-  </script>
-
-<script type="text/javascript">
-    $(function () {
-		var $table = $('#table');
-
-    $table.on('click-row.bs.table', function (e, row, $element) {
-        window.open('https://github.com/wenzhixin/bootstrap-table/issues/1808', '_blank');
+$(document).ready(function($) {
+    $(".table-row").click(function() {
+        window.document.location = $(this).data("href");
     });
 });
-
-$(document).ready(function() {
-    alert('Hello world!');
-});
-
-
 </script>
 
 {% if questions %}
