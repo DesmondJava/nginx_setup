@@ -10,14 +10,7 @@
                 based and I chose Bootstrap framework how frontend (UI based)</p>
         </div>
     </div>
-<script>
-        alert( 'Привет, Мир!' );
-$(document).ready(function($) {
-    $(".table-row").click(function() {
-        window.document.location = $(this).data("href");
-    });
-});
-</script>
+
 
 {% if questions %}
 <table class="table table-striped table-hover">
@@ -41,7 +34,14 @@ $(document).ready(function($) {
     {% endfor %}
     </tbody>
   </table>
-
+<script>
+        alert( 'Привет, Мир!' );
+$(document).ready(function($) {
+    $(".table-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+</script>
 
 {#{% endif %}    #}
 
