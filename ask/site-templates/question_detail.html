@@ -12,7 +12,7 @@
     <button href="#" data-toggle="tooltip" title="Decrease rating of this question" class="btn btn-primary btn-xs">-1</button>
     <p class="text-right">
         <strong>Author:</strong> {{ question.author }} <br>
-        <strong>Published</strong> {{ question.added_at }}
+        <strong>Published at:</strong> {{ question.added_at|date:'Y-m-d H:i' }}
     </p>
 <br>
 <hr>
@@ -28,7 +28,7 @@
                 {% for answer in answers %}
                     <tr>
                         <td class="col-md-8"><p>{{ answer }}</p></td>
-                        <td class="col-md-3 text-center"><p>{{ answer.added_at }}</p></td>
+                        <td class="col-md-3 text-center"><p>{{ answer.added_at|date:'Y-m-d H:i' }}</p></td>
                         <td class="col-md-2 text-center"><p>{{ answer.author }}</p></td>
                     </tr>
                 {% endfor %}
