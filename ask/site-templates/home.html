@@ -10,6 +10,13 @@
                 based and I chose Bootstrap framework how frontend (UI based)</p>
         </div>
     </div>
+<script type="text/javascript">
+$(document).ready(function($) {
+    $(".table-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+</script>
 
 {% if questions %}
 <table class="table table-striped">
@@ -23,7 +30,7 @@
     </thead>
     <tbody>
     {% for question in questions %}
-        <tr class="clickable-row" data-href="{{ question.get_url }}">
+        <tr class="table-row" data-href="{{ question.get_url }}">
            <td><a href="{{ question.get_url }}">{{ question }}</a></td>
            <td>{{ question.added_at }}</td>
            <td>{{ question.rating }}</td>
@@ -33,13 +40,7 @@
     {% endfor %}
     </tbody>
   </table>
-<script type="text/javascript">
-$(document).ready(function($) {
-    $(".clickable-row").click(function() {
-        window.document.location = $(this).data("href");
-    });
-});
-</script>
+
 
 {#{% endif %}    #}
 
@@ -50,7 +51,7 @@ $(document).ready(function($) {
 {#	{% endfor %}#}
 {#</ul>#}
 
-<nav class="center-block"><ul class="pagination">
+<nav class="center-block text-center"><ul class="pagination">
     {% for p in paginator.page_range %}
         {% if p == page.number %}
             <li class="active">
