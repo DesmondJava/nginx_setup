@@ -8,7 +8,12 @@
     <br>
     <p>{{ question.text }}</p>
     <br>
-    <button href="#" class="btn btn-primary btn-xs">+1</button> <button href="#" class="btn btn-primary btn-xs">-1</button><p class="text-left"><strong>Published</strong> {{ question.added_at }} <br><strong>Author:</strong> {{ question.author }}</p>
+    <button href="#" data-toggle="tooltip" title="Increase rating of this question" class="btn btn-primary btn-xs">+1</button>
+    <button href="#" data-toggle="tooltip" title="Decrease rating of this question" class="btn btn-primary btn-xs">-1</button>
+    <p class="text-right">
+        <strong>Author:</strong> {{ question.author }} <br>
+        <strong>Published</strong> {{ question.added_at }}
+    </p>
 <br>
 <hr>
 
