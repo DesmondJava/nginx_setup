@@ -42,7 +42,7 @@ class AskForm(forms.Form):
 
 
 class AnswerForm(forms.Form):
-    text = forms.CharField(label="Answer", max_length=150,
+    text = forms.CharField(label="Answer", max_length=500,
                            widget=forms.Textarea(attrs={'class': 'form-control', 'name': 'text'}))
     question = forms.IntegerField(widget=forms.HiddenInput)
 
