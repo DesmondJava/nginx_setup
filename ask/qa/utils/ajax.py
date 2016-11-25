@@ -30,5 +30,5 @@ def login_required_ajax(view):
                 message='You should be authorized',
             )
         else:
-            return redirect('/login/?continue=' + request.get_full_path())
+            return redirect('/login/?next=' + request.get_full_path())
     return view2
