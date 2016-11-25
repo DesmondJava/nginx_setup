@@ -85,7 +85,7 @@ class SignupForm(forms.Form):
             raise forms.ValidationError('Username is empty', code='validation_error')
         if User.objects.filter(username=username).exists():
             raise forms.ValidationError('Username "%s" is already in use.' % username)
-        if len(username.strip()) < 2:
+        if len(username.strip()) < 4:
             raise forms.ValidationError('Please, use minimum 3 characters for your name', code='validation_error')
         return username
 

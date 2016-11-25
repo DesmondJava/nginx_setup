@@ -2,64 +2,64 @@
 
 {% block content %}
 
-
 <div class="container">
-<h2 class="text-center">{{ question.title }}</h2>
-<hr>
+    <h2 class="text-center">{{ question.title }}</h2>
+    <hr>
+    <br>
+    <p>{{ question.text }}</p>
+    <br>
+    <button href="#" class="btn btn-primary btn-xs">+1</button> <button href="#" class="btn btn-primary btn-xs">-1</button><p class="text-left"><strong>Published</strong> {{ question.added_at }} <br><strong>Author:</strong> {{ question.author }}</p>
 <br>
-<p>{{ question.text }}</p>
-<p>Published {{ question.added_at }} by {{ question.author }}</p>
-<br>
 <hr>
 
-{% if answers %}
-<table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Answers:</th>
-      </tr>
-    </thead>
-    <tbody>
-    {% for answer in answers %}
-        <tr>
-    <td><p>{{ answer }}</p></td>
-        </tr>
-    {% endfor %}
-    </tbody>
-  </table>
-{% endif %}
-
-
-<h3>Your could write your answer:</h3>
-<div class="panel-body">
-                    <form method="post" action="/answer/{{ question.id }}/">
-                    {% csrf_token %}
-
-                        <p class="bs-component">
-                            <table>
-                                <tr>
-                                    <td>{{ form.text }}</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        {% if form.text.errors %}
-                                             {{ form.text.errors }}
-                                        {% endif %}
-                                    </td>
-                                </tr>
+    {% if answers %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Answers:</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for answer in answers %}
                     <tr>
-                        <td>
-                            </p>
-                        <p class="bs-component">
-                            <div style="text-align: center;">
-                                <input class="btn btn-success btn-sm" type="submit" value="Submit" />
-                            </div>
-                        </p>
+                        <td class="col-md-8"><p>{{ answer }}</p></td>
+                        <td class="col-md-3 text-center"><p>{{ answer.added_at }}</p></td>
+                        <td class="col-md-2 text-center"><p>{{ answer.author }}</p></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    <h3>Your could write your answer:</h3>
+    <div class="panel-body">
+        <form method="post" action="/answer/{{ question.id }}/">
+        {% csrf_token %}
+            <p class="bs-component">
+                <table>
+                    <tr>
+                        <td>{{ form.text }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            {% if form.text.errors %}
+                                 {{ form.text.errors }}
+                            {% endif %}
                         </td>
                     </tr>
-                            </table>
-                        <input type="hidden" name="question" value="{{ question.id }}" />
-                    </form>
-                </div>
+                    <tr>
+                        <td>
+                            <p class="bs-component">
+                                <div style="text-align: center;">
+                                    <input class="btn btn-success btn-sm" type="submit" value="Submit" />
+                                </div>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </p>
+            <input type="hidden" name="question" value="{{ question.id }}" />
+        </form>
+    </div>
 </div>
 {% endblock %}
