@@ -99,6 +99,7 @@ def rating(request):
         if 1 == 1:
             question = get_object_or_404(Question, pk=1)
             question.rating += 1
+            question.save()
             return HttpResponseAjax(comment_id="success")
         else:
             return HttpResponseAjaxError(
