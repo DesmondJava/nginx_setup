@@ -13,13 +13,36 @@
 </div>
 
 {% if questions %}
-<ul>
-	{% for q in questions %}
-		<li><a href="{{ q.get_url }}">{{ q }}</a></li>
-	{% endfor %}
-</ul>
+<table class="table table-striped">
+    <thead>
+      <tr>
+          <th>Title</th>
+          <th>Date</th>
+          <th>Reputation</th>
+          <th>Author</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for question in questions %}
+        <tr>
+           <td><a href="{{ question.get_url }}">{{ question }}</a></td>
+           <td>{{ question.added_at }}</td>
+           <td>{{ question.rating }}</td>
+           <td>{{ question.author }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{#{% endif %}    #}
 
-<nav><ul class="pagination">
+{#{% if questions %}#}
+{#<ul>#}
+{#	{% for q in questions %}#}
+{#		<li><a href="{{ q.get_url }}">{{ q }}</a></li>#}
+{#	{% endfor %}#}
+{#</ul>#}
+
+<nav><ul class="pagination center-block">
     {% for p in paginator.page_range %}
         {% if p == page.number %}
             <li class="active">
