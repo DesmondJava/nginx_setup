@@ -35,12 +35,13 @@
     </tbody>
   </table>
 <script>
-        alert( 'Привет, Мир!' );
-$(document).ready(function($) {
+jQuery(document).ready(function($) {
     $(".table-row").click(function() {
         window.document.location = $(this).data("href");
     });
 });
+        alert( 'Привет, Мир!' );
+
 </script>
 
 {#{% endif %}    #}
