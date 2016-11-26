@@ -12,10 +12,31 @@
     <button href="#" data-toggle="tooltip" title="Decrease rating of this question" class="btn btn-primary btn-xs">-1</button>
 
     <script>
+        $(function(){
+            $('#tst').on('submit', function(e){
+                e.preventDefault();
+                $.ajax({
+                    url: '/rating/', //this is the submit URL
+                    type: 'POST', //or POST
+                    data: {
+                        question_123: "{{ question.id }}",
+                        changing: 'plus' }
+                        })
+                     .success(function(data) {
+                         if (data.status == 'ok') {
+                             console.log(data.comment_id);
+                        }
+                        }).error(function() {
+                            console.log('http error')
+                        });
+        });
+    });
+
+
     $.ajax({
         url: '/rating/',
         type: 'POST',
-        data: { question_id: 12, boolean: 'true' }
+        data: { question_123: "{{ question.id }}", changing: 'plus' }
     }).success(function(data) {
         if (data.status == 'ok') {
             console.log(data.comment_id);
@@ -25,10 +46,11 @@
     });
     </script>
 
-<form method="post" action="/rating/">
+{#<form method="post" action="/rating/">#}
+<form id="tst">
         {% csrf_token %}
-            <input type="hidden" name="changing" value="plus" />
-            <input type="hidden" name="question_123" value="{{ question.id }}" />
+{#            <input type="hidden" name="changing" value="plus" />#}
+{#            <input type="hidden" name="question_123" value="{{ question.id }}" />#}
     <input class="btn btn-success btn-sm" type="submit" value="Submit" />
         </form>
 

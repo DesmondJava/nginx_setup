@@ -101,28 +101,26 @@ def rating(request):
         question_id = request.POST.get('question_123')
         question = get_object_or_404(Question, pk=question_id)
         user = request.user
-        # is_already_give = question.question_like_set.filter(likes=user).exists()
-        # is_already_give = User.objects.all().filter(likes=current_course)
         is_already_give = Question.objects.filter(pk=question_id, likes=user).exists()
         if is_already_give:
             return HttpResponseAjaxError(
                 code="bad_params",
-                message="you already give, is_already_give={0}, user={1}, question={2}".format(is_already_give, user.username, question_id),
+                message="You are not allowed to change rating of this question more than one time"
             )
-        if changing == 'plus':
+        elif changing == 'plus':
             question.rating += 1
             question.likes.add(user)
             question.save()
-            return HttpResponseAjax(comment_id="success, is_already_give={0}, user={1}, question={2}".format(is_already_give, user.username, question_id))
+            return HttpResponseAjax(comment_id="success, rating successfully is changed.")
         elif changing == 'minus':
             question.rating -= 1
             question.likes.add(user)
             question.save()
-            return HttpResponseAjax(comment_id="success, is_already_give={0}, user={1}, question={2}".format(is_already_give, user.username, question_id))
+            return HttpResponseAjax(comment_id="Ah ti ebaniy shashlik, nahuya minusuesh?")
         else:
             return HttpResponseAjaxError(
                 code="bad_params",
-                message="test, is_already_give={0}, user={1}, question={2}".format(is_already_give, user.username, question_id),
+                message="something went wrong! Please contact developer about this message. Thanks"
             )
 
 
