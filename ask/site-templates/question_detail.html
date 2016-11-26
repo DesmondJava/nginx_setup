@@ -12,80 +12,6 @@
     <a id="increase" href="#" data-toggle="tooltip" title="Increase rating of this question" class="btn btn-primary btn-xs">+1</a>
     <a id="decrease" href="#" data-toggle="tooltip" title="Decrease rating of this question" class="btn btn-primary btn-xs">-1</a>
 
-
-    <script src = "{% static 'js/jquery.min.js' %}"></script>
-
-    <script>
-
-    function getCookie(name) {
-        var cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            var cookies = document.cookie.split(';');
-            for (var i = 0; i < cookies.length; i++) {
-                var cookie = jQuery.trim(cookies[i]);
-            // Does this cookie string begin with the name we want?
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
-        }
-        return cookieValue;
-    }
-        var csrftoken = getCookie('csrftoken');
-
-      function sentajax(button_type){
-{#        $("button").click(function(e){#}
-{#            $('#tst').on('submit', function(e){#}
-          alert("start of sentajax");
-{#            e.preventDefault();#}
-            $.ajax({
-                url: '/rating/',
-                type: 'POST',
-                data: {
-                    question_123: "{{ question.id }}",
-                    changing: button_type,
-                    csrfmiddlewaretoken: csrftoken
-                }
-            }).success(function(data) {
-                if (data.status == 'ok') {
-                    console.log(data.comment_id);
-                }
-            }).error(function() {
-                console.log('http error')
-            });
-        alert("end of sentajax");
-    }
-    $('#increase').click(function(){
-            alert("into increase");
-            sentajax( 'plus' );
-        alert("into increase after func");
-    });
-
-    $( '#decrease' ).click(function(){
-         sentajax( 'minus' );
-    });
-
-
-    </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <p class="text-right">
         <strong>Author:</strong> {{ question.author }} <br>
         <strong>Published at:</strong> {{ question.added_at|date:'Y-m-d H:i' }}
@@ -143,4 +69,51 @@
         </form>
     </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script src = "{% static 'js/jquery.min.js' %}"></script>
+
+<script>
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+    function sentajax(button_type){
+          $.ajax({
+                url: '/rating/',
+                type: 'POST',
+                data: {
+                    question_123: "{{ question.id }}",
+                    changing: button_type,
+                    csrfmiddlewaretoken: csrftoken
+                }
+            }).success(function(data) {
+                if (data.status == 'ok') {
+                    console.log(data.comment_id);
+                }
+            }).error(function() {
+                console.log('http error')
+            });
+    }
+    $('#increase').click(function(){
+        sentajax( 'plus' );
+    });
+
+    $( '#decrease' ).click(function(){
+         sentajax( 'minus' );
+    });
+</script>
 {% endblock %}
