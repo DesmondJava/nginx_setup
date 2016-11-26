@@ -25,9 +25,13 @@
 
 
 
+<script>
+    alert("Privet")
+</script>
 
-
-
+<script type="text/javascript">
+    alert("wtf")
+</script>
 
 
 
@@ -96,15 +100,20 @@
 {% endblock %}
 
 <script type="text/javascript" >
+    alert('message');
+
+    $(document).ready(function () {
+
         if (typeof jQuery != 'undefined') {
 
-    alert("jQuery library is loaded!");
+            alert("jQuery library is loaded!");
 
-}else{
+        } else {
 
-    alert("jQuery library is not found!");
+            alert("jQuery library is not found!");
 
-}
+        }
+    });
 
 
         $(function(){
