@@ -11,51 +11,6 @@
     <button href="#" data-toggle="tooltip" title="Increase rating of this question" class="btn btn-primary btn-xs">+1</button>
     <button href="#" data-toggle="tooltip" title="Decrease rating of this question" class="btn btn-primary btn-xs">-1</button>
 
-<script type="text/javascript"  src = "{% static 'js/jquery.min.js' %}">
-        if (typeof jQuery != 'undefined') {
-
-    alert("jQuery library is loaded!");
-
-}else{
-
-    alert("jQuery library is not found!");
-
-}
-
-
-        $(function(){
-            $('#tst').on('submit', function(e){
-                e.preventDefault();
-                $.ajax({
-                    url: '/rating/', //this is the submit URL
-                    type: 'POST', //or POST
-                    data: {
-                        question_123: "{{ question.id }}",
-                        changing: 'plus' }
-                        })
-                     .success(function(data) {
-                         if (data.status == 'ok') {
-                             console.log(data.comment_id);
-                        }
-                        }).error(function() {
-                            console.log('http error')
-                        });
-        });
-    });
-
-
-    $.ajax({
-        url: '/rating/',
-        type: 'POST',
-        data: { question_123: "{{ question.id }}", changing: 'plus' }
-    }).success(function(data) {
-        if (data.status == 'ok') {
-            console.log(data.comment_id);
-        }
-    }).error(function() {
-        console.log('http error')
-    });
-    </script>
 
 {#<form method="post" action="/rating/">#}
 <form id="tst">
@@ -139,3 +94,49 @@
     </div>
 </div>
 {% endblock %}
+
+<script type="text/javascript"  src = "{% static 'js/jquery.min.js' %}">
+        if (typeof jQuery != 'undefined') {
+
+    alert("jQuery library is loaded!");
+
+}else{
+
+    alert("jQuery library is not found!");
+
+}
+
+
+        $(function(){
+            $('#tst').on('submit', function(e){
+                e.preventDefault();
+                $.ajax({
+                    url: '/rating/', //this is the submit URL
+                    type: 'POST', //or POST
+                    data: {
+                        question_123: "{{ question.id }}",
+                        changing: 'plus' }
+                        })
+                     .success(function(data) {
+                         if (data.status == 'ok') {
+                             console.log(data.comment_id);
+                        }
+                        }).error(function() {
+                            console.log('http error')
+                        });
+        });
+    });
+
+
+    $.ajax({
+        url: '/rating/',
+        type: 'POST',
+        data: { question_123: "{{ question.id }}", changing: 'plus' }
+    }).success(function(data) {
+        if (data.status == 'ok') {
+            console.log(data.comment_id);
+        }
+    }).error(function() {
+        console.log('http error')
+    });
+    </script>
