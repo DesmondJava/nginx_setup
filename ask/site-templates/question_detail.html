@@ -100,10 +100,10 @@
                 }
             }).success(function(data) {
                 if (data.status == 'ok') {
-                    console.log(data.comment_id);
+                    alert("test1")
                 }
             }).error(function() {
-                console.log('http error')
+                 alert("alerttest2")
             });
     }
     $('#increase').click(function(){
