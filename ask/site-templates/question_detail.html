@@ -99,12 +99,8 @@
                     csrfmiddlewaretoken: csrftoken
                 }
             }).success(function(data) {
-                if (data.status == 'ok') {
-                    alert(data.message)
-                }
-            }).error(function() {
-                 alert("fdsf")
-            });
+                alert(data.message)
+            })
     }
     $('#increase').click(function(){
         sentajax( 'plus' );
