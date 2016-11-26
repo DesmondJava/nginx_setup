@@ -16,6 +16,10 @@
     <script src = "{% static 'js/jquery.min.js' %}"></script>
 
     <script>
+        $("#increase").click(function(){
+            alert("fdsaf")
+        };
+
     function getCookie(name) {
         var cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -32,9 +36,9 @@
         return cookieValue;
     }
     var csrftoken = getCookie('csrftoken');
-    $('#increase').click(function(){
-            sentajax( 'plus' );
-    });
+{#    $('#increase').click(function(){#}
+{#            sentajax( 'plus' );#}
+{#    });#}
 
     $( '#decrease' ).click(function(){
          sentajax( 'minus' );
