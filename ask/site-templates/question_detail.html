@@ -1,3 +1,4 @@
+{% load staticfiles %}
 {% extends 'base.html' %}
 
 {% block content %}
@@ -10,7 +11,7 @@
     <br>
     <button href="#" data-toggle="tooltip" title="Increase rating of this question" class="btn btn-primary btn-xs">+1</button>
     <button href="#" data-toggle="tooltip" title="Decrease rating of this question" class="btn btn-primary btn-xs">-1</button>
-
+<script src = "{% static 'js/jquery.min.js' %}"></script>
      <script>
                     if (typeof jQuery != 'undefined') {
 
