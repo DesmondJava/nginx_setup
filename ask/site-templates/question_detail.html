@@ -24,9 +24,9 @@
 
 
 
-
+{% block scripts %}
 <script >
-
+alert("test")
      $(document).ready(function () {
 
         if (typeof jQuery != 'undefined') {
@@ -39,7 +39,26 @@
 
         }
     });
+
 </script>
+    <script src="js/jquery.min.js"></script>
+    <script >
+alert("test2")
+     $(document).ready(function () {
+
+        if (typeof jQuery != 'undefined') {
+
+            alert("jQuery library is loaded!!");
+
+        } else {
+
+            alert("jQuery library is not found!!");
+
+        }
+    });
+
+</script>
+{% endblock %}
 
 
 
