@@ -103,7 +103,7 @@ def rating(request):
         user = request.user
         # is_already_give = question.question_like_set.filter(likes=user).exists()
         # is_already_give = User.objects.all().filter(likes=current_course)
-        is_already_give = Question.objects.filter(question_id=question_id, likes=user).exists()
+        is_already_give = Question.objects.filter(pk=question_id, likes=user).exists()
         if is_already_give:
             return HttpResponseAjaxError(
                 code="bad_params",
