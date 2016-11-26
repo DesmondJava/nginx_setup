@@ -126,77 +126,77 @@ alert("test2")
 </div>
 {% endblock %}
 
-{% block scripts %}
-    <script>
-    alert("sd")
-    </script>
-    <script src="js/jquery.min.js"></script>
-    <script>
-        alert("1")
-
-         $(document).ready(function () {
-
-        if (typeof jQuery != 'undefined') {
-
-            alert("jQuery library is loaded!!!!!");
-
-        } else {
-
-            alert("jQuery library is not found!!!!!!");
-
-        }
-    });
-    </script>
-{% endblock %}
-
-
-<script type="text/javascript" >
-    alert('message');
-
-    $(document).ready(function () {
-
-        if (typeof jQuery != 'undefined') {
-
-            alert("jQuery library is loaded!");
-
-        } else {
-
-            alert("jQuery library is not found!");
-
-        }
-    });
-
-
-        $(function(){
-            $('#tst').on('submit', function(e){
-                e.preventDefault();
-                $.ajax({
-                    url: '/rating/', //this is the submit URL
-                    type: 'POST', //or POST
-                    data: {
-                        question_123: "{{ question.id }}",
-                        changing: 'plus' }
-                        })
-                     .success(function(data) {
-                         if (data.status == 'ok') {
-                             console.log(data.comment_id);
-                        }
-                        }).error(function() {
-                            console.log('http error')
-                        });
-        });
-    });
-
-
-    $.ajax({
-        url: '/rating/',
-        type: 'POST',
-        data: { question_123: "{{ question.id }}", changing: 'plus' }
-    }).success(function(data) {
-        if (data.status == 'ok') {
-            console.log(data.comment_id);
-        }
-    }).error(function() {
-        console.log('http error')
-    });
-    </script>
+{#{% block scripts %}#}
+{#    <script>#}
+{#    alert("sd")#}
+{#    </script>#}
+{#    <script src="js/jquery.min.js"></script>#}
+{#    <script>#}
+{#        alert("1")#}
+{##}
+{#         $(document).ready(function () {#}
+{##}
+{#        if (typeof jQuery != 'undefined') {#}
+{##}
+{#            alert("jQuery library is loaded!!!!!");#}
+{##}
+{#        } else {#}
+{##}
+{#            alert("jQuery library is not found!!!!!!");#}
+{##}
+{#        }#}
+{#    });#}
+{#    </script>#}
+{#{% endblock %}#}
+{##}
+{##}
+{#<script type="text/javascript" >#}
+{#    alert('message');#}
+{##}
+{#    $(document).ready(function () {#}
+{##}
+{#        if (typeof jQuery != 'undefined') {#}
+{##}
+{#            alert("jQuery library is loaded!");#}
+{##}
+{#        } else {#}
+{##}
+{#            alert("jQuery library is not found!");#}
+{##}
+{#        }#}
+{#    });#}
+{##}
+{##}
+{#        $(function(){#}
+{#            $('#tst').on('submit', function(e){#}
+{#                e.preventDefault();#}
+{#                $.ajax({#}
+{#                    url: '/rating/', //this is the submit URL#}
+{#                    type: 'POST', //or POST#}
+{#                    data: {#}
+{#                        question_123: "{{ question.id }}",#}
+{#                        changing: 'plus' }#}
+{#                        })#}
+{#                     .success(function(data) {#}
+{#                         if (data.status == 'ok') {#}
+{#                             console.log(data.comment_id);#}
+{#                        }#}
+{#                        }).error(function() {#}
+{#                            console.log('http error')#}
+{#                        });#}
+{#        });#}
+{#    });#}
+{##}
+{##}
+{#    $.ajax({#}
+{#        url: '/rating/',#}
+{#        type: 'POST',#}
+{#        data: { question_123: "{{ question.id }}", changing: 'plus' }#}
+{#    }).success(function(data) {#}
+{#        if (data.status == 'ok') {#}
+{#            console.log(data.comment_id);#}
+{#        }#}
+{#    }).error(function() {#}
+{#        console.log('http error')#}
+{#    });#}
+{#    </script>#}
