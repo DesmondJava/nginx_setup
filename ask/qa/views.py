@@ -111,12 +111,12 @@ def rating(request):
             question.rating += 1
             question.likes.add(user)
             question.save()
-            return HttpResponseAjax(comment_id="success, rating successfully is changed.")
+            return HttpResponseAjax(message="success, rating successfully is changed.")
         elif changing == 'minus':
             question.rating -= 1
             question.likes.add(user)
             question.save()
-            return HttpResponseAjax(comment_id="Ah ti ebaniy shashlik, nahuya minusuesh?")
+            return HttpResponseAjax(message="Ah ti ebaniy shashlik, nahuya minusuesh?")
         else:
             return HttpResponseAjaxError(
                 code="bad_params",

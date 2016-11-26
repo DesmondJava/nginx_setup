@@ -100,10 +100,10 @@
                 }
             }).success(function(data) {
                 if (data.status == 'ok') {
-                    alert(data.comment_id)
+                    alert(data.message)
                 }
-            }).error(function(data) {
-                 alert("You are not allowed to change rating of this question more than one time")
+            }).error(function() {
+                 alert("fdsf")
             });
     }
     $('#increase').click(function(){
