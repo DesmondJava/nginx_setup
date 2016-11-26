@@ -2,6 +2,7 @@
 
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
@@ -100,7 +101,9 @@ def rating(request):
         question_id = request.POST.get('question_123')
         question = get_object_or_404(Question, pk=question_id)
         user = request.user
-        is_already_give = question.question_like_set.filter(likes=user).exists()
+        # is_already_give = question.question_like_set.filter(likes=user).exists()
+        # is_already_give = User.objects.all().filter(likes=current_course)
+        is_already_give = Question.objects.filter(question_id=question_id, likes=user).exists()
         if is_already_give:
             return HttpResponseAjaxError(
                 code="bad_params",
