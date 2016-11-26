@@ -53,10 +53,12 @@
             }).error(function() {
                 console.log('http error')
             });
-
+        alert("end of sentajax");
     }
     $('#increase').click(function(){
+            alert("into increase");
             sentajax( 'plus' );
+        alert("into increase after func");
     });
 
     $( '#decrease' ).click(function(){
