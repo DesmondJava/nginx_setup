@@ -47,19 +47,6 @@
                         });
         });
     });
-
-
-    $.ajax({
-        url: '/rating/',
-        type: 'POST',
-        data: { question_123: "{{ question.id }}", changing: 'plus' }
-    }).success(function(data) {
-        if (data.status == 'ok') {
-            console.log(data.comment_id);
-        }
-    }).error(function() {
-        console.log('http error')
-    });
     </script>
 
 {#<form method="post" action="/rating/">#}
