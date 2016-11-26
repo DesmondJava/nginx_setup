@@ -25,12 +25,19 @@
 
 
 
-<script>
-    alert("Privet")
-</script>
-
 <script type="text/javascript">
-    alert("wtf")
+     $(document).ready(function () {
+
+        if (typeof jQuery != 'undefined') {
+
+            alert("jQuery library is loaded!");
+
+        } else {
+
+            alert("jQuery library is not found!");
+
+        }
+    });
 </script>
 
 
@@ -98,6 +105,25 @@
     </div>
 </div>
 {% endblock %}
+
+{% block scripts %}
+{#    <script src="js/jquery.min.js"></script>#}
+    <script>
+         $(document).ready(function () {
+
+        if (typeof jQuery != 'undefined') {
+
+            alert("jQuery library is loaded!!!!!");
+
+        } else {
+
+            alert("jQuery library is not found!!!!!!");
+
+        }
+    });
+    </script>
+{% endblock %}
+
 
 <script type="text/javascript" >
     alert('message');
