@@ -69,48 +69,48 @@
         </form>
     </div>
 </div>
-{% block scripts %}
-<script src = "{% static 'js/jquery.min.js' %}"></script>
-
-<script>
-    function getCookie(name) {
-        var cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            var cookies = document.cookie.split(';');
-            for (var i = 0; i < cookies.length; i++) {
-                var cookie = jQuery.trim(cookies[i]);
-            // Does this cookie string begin with the name we want?
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
-        }
-        return cookieValue;
-    }
-    var csrftoken = getCookie('csrftoken');
-    function sentajax(button_type){
-          $.ajax({
-                url: '/rating/',
-                type: 'POST',
-                data: {
-                    question_123: "{{ question.id }}",
-                    changing: button_type,
-                    csrfmiddlewaretoken: csrftoken
-                }
-            }).success(function(data) {
-                alert(data.message)
-            })
-    }
-    $('#increase').click(function(){
-        sentajax( 'plus' );
-    });
-
-    $( '#decrease' ).click(function(){
-         sentajax( 'minus' );
-    });
-</script>
-{% endblock %}
+{#{% block scripts %}#}
+{#<script src = "{% static 'js/jquery.min.js' %}"></script>#}
+{##}
+{#<script>#}
+{#    function getCookie(name) {#}
+{#        var cookieValue = null;#}
+{#        if (document.cookie && document.cookie !== '') {#}
+{#            var cookies = document.cookie.split(';');#}
+{#            for (var i = 0; i < cookies.length; i++) {#}
+{#                var cookie = jQuery.trim(cookies[i]);#}
+{#            // Does this cookie string begin with the name we want?#}
+{#                if (cookie.substring(0, name.length + 1) === (name + '=')) {#}
+{#                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));#}
+{#                    break;#}
+{#                }#}
+{#            }#}
+{#        }#}
+{#        return cookieValue;#}
+{#    }#}
+{#    var csrftoken = getCookie('csrftoken');#}
+{#    function sentajax(button_type){#}
+{#          $.ajax({#}
+{#                url: '/rating/',#}
+{#                type: 'POST',#}
+{#                data: {#}
+{#                    question_123: "{{ question.id }}",#}
+{#                    changing: button_type,#}
+{#                    csrfmiddlewaretoken: csrftoken#}
+{#                }#}
+{#            }).success(function(data) {#}
+{#                alert(data.message)#}
+{#            })#}
+{#    }#}
+{#    $('#increase').click(function(){#}
+{#        sentajax( 'plus' );#}
+{#    });#}
+{##}
+{#    $( '#decrease' ).click(function(){#}
+{#         sentajax( 'minus' );#}
+{#    });#}
+{#</script>#}
+{#{% endblock %}#}
 
 {% endblock %}
 
