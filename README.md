@@ -17,8 +17,11 @@ pip install gunicorn
 pip install mysqlclient  
 6. Install Django framework:  
 pip install Django  
+7. Setup your mysql table
+cd ~/web/ask
 
 Then you should copy all files from current project to ~/web/ folder. It requires next scripts to run and configure application. After copy go to ~/web/ folder and run next scripts:  
 
-1. sudo ./settingmysql.sh for setup user admin for mysql and create table  
-2. sudo ./init.sh to run application  
+1. Setup your mysql table: cd ~/web/ask, python manage.py syncdb
+2. sudo ./settingmysql.sh for setup user admin for mysql and create table  
+3. sudo ./init.sh to run application  
