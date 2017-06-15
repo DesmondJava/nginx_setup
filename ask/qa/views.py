@@ -12,6 +12,8 @@ from qa.forms import SignupForm
 from qa.utils.ajax import HttpResponseAjax, HttpResponseAjaxError, login_required_ajax
 from qa.utils.viewhelpers import paginate
 
+from ask.qa.forms import HostForm
+
 
 @require_GET
 def test(request, *args, **kwargs):
@@ -72,6 +74,20 @@ def home(request):
 #     return render(request, 'ask.html', {
 #         'form': form
 #     })
+
+@login_required
+def createhost(request):
+    if request.method == "POST":
+        form = HostForm(request.POST)
+        if form.is_valid():
+            form._user = request.user
+            host = form.save()
+            return HttpResponseRedirect('/')
+    else:
+        form = HostForm()
+    return render(request, 'createhost.html', {
+        'form': form
+    })
 
 
 # @login_required

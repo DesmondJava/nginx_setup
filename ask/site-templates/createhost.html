@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container">
+    <h2 class="text-center">Create new Host</h2>
+
+    <div class="panel-body">
+        <form method="post" action="/ask/">
+        {% csrf_token %}
+            <p class="bs-component">
+                <table>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td>
+                        {% for field in form.table_name %}
+                            <div class="col-md-12 dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                    {{ field.label_tag }}
+                                    <span class="caret"></span>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <div><a href="#">{{ field }}</a></div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>{{ form.title.label_tag }}</td>
+                        <td>{{ form.title }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            {% if form.title.errors %}
+                                 {{ form.title.errors }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.text.label_tag }}</td>
+                        <td>{{ form.text }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            {% if form.text.errors %}
+                                 {{ form.text.errors }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+            </p>
+                        <td colspan="2">
+                            <p class="bs-component">
+                                <div style="text-align: center;">
+                                    <input class="btn btn-success btn-sm" type="submit" value="Submit" />
+                                </div>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+        </form>
+    </div>
+</div>
+{% endblock %}

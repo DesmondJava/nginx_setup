@@ -7,6 +7,67 @@ from django.shortcuts import get_object_or_404
 
 from qa.models import User
 
+from ask.qa.models import Host
+
+TABLE_NAMES = (
+    ('1', 'Current Development & PT Environment'),
+    ('2', 'Previous Release Environments'),
+    ('3', 'Open Releases'),
+    ('3', 'GAed Releases'),
+    ('3', 'Servers to be Retired'),
+)
+
+class HostForm(forms.Form):
+    table_name = forms.ChoiceField(choices=TABLE_NAMES, label="Type/table name")
+    host_name = forms.CharField(label="Host name", max_length=100,
+                            widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'title'}))
+    eea_sqm = forms.CharField(label="EEA-SQM", max_length=100,
+                           widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'title'}))
+    iSecure = forms.CharField(label="iSecure", max_length=100,
+                           widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'title'}))
+    dev_pt = forms.CharField(label="DEV/PT", max_length=100,
+                           widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'title'}))
+    hardware_model = forms.CharField(label="Hardware model", max_length=100,
+                           widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'title'}))
+    hardware_cpuram = forms.CharField(label="Hardware Cpu and Ram", max_length=100,
+                           widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'title'}))
+    os = forms.CharField(label="OS", max_length=100,
+                           widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'title'}))
+    oracle = forms.CharField(label="Oracle", max_length=100,
+                           widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'title'}))
+    iSecure_link = forms.CharField(label="iSecure link", max_length=100,
+                           widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'title'}))
+    sqm_link = forms.CharField(label="SQM link", max_length=100,
+                           widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'title'}))
+    svc_mgmt_link = forms.CharField(label="Scv Mgmt link", max_length=100,
+                           widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'title'}))
+    eea_sqm_gui_link = forms.CharField(label="EEA-SQM GUI link", max_length=100,
+                           widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'title'}))
+    database = forms.CharField(label="Database", max_length=100,
+                           widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'title'}))
+    utf8 = forms.CharField(label="UTF8", max_length=100,
+                           widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'title'}))
+    owner = forms.CharField(label="Owner", max_length=100,
+                           widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'title'}))
+    comments = forms.CharField(label="Comments", max_length=500,
+                           widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'title'}))
+
+    def clean_title(self):
+        host_name = self.cleaned_data['title']
+        if host_name.strip() == '':
+            raise forms.ValidationError('Host name is empty', code='validation_error')
+        if len(host_name.strip()) < 2:
+            raise forms.ValidationError('Title is short. Expand the question title.', code='validation_error')
+        return host_name
+
+    def save(self):
+        if self._user.is_anonymous():
+            return
+        host = Host(**self.cleaned_data)
+        host.save()
+        return host
+
+
 
 # class AskForm(forms.Form):
 #     title = forms.CharField(label="Title", max_length=100,

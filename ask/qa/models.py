@@ -1,6 +1,5 @@
 import uuid
 
-from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -40,6 +39,30 @@ from django.db import models
 #
 #     def __unicode__(self):
 #         return self.text
+
+class Host(models.Model):
+    table_name = models.TextField()
+    host_name = models.TextField()
+    eea_sqm = models.TextField()
+    iSecure = models.TextField()
+    dev_pt = models.TextField()
+    hardware_model = models.TextField()
+    hardware_cpuram = models.TextField()
+    os = models.TextField()
+    oracle = models.TextField()
+    iSecure_link = models.TextField()
+    sqm_link = models.TextField()
+    svc_mgmt_link = models.TextField()
+    eea_sqm_gui_link = models.TextField()
+    database = models.TextField()
+    utf8 = models.TextField()
+    last_update = models.DateTimeField(auto_now_add=True)
+    owner = models.TextField()
+    comments = models.TextField()
+
+    def __unicode__(self):
+        return self.text
+
 
 
 
