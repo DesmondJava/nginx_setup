@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+print BASE_DIR
+print PROJECT_DIR
+print "Test"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -30,11 +33,13 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 
 STATICFILES_DIRS = [
-os.path.join(BASE_DIR, "qa", "static"),
+    os.path.join(BASE_DIR, "static"),
 ]
 
 if __name__ == '__main__':
+    print "BaseDir"
     print BASE_DIR
+    print "Static_dir"
     print STATICFILES_DIRS
 # Application definition
 
@@ -112,4 +117,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = '/home/vadym/web/ask/static/'
+STATIC_ROOT = '/home/vadym/web/static/'
