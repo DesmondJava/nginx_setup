@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import get_object_or_404
 
-from qa.models import Question, Answer, User
+from qa.models import User
 
 
 # class AskForm(forms.Form):

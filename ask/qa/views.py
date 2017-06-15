@@ -8,8 +8,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.http import require_GET
 
-from qa.forms import AskForm, AnswerForm, SignupForm
-from qa.models import Question
+from qa.forms import SignupForm
 from qa.utils.ajax import HttpResponseAjax, HttpResponseAjaxError, login_required_ajax
 from qa.utils.viewhelpers import paginate
 
@@ -21,14 +20,16 @@ def test(request, *args, **kwargs):
 
 @require_GET
 def home(request):
-    questions = Question.objects.new()
-    paginator, page = paginate(request, questions)
-    paginator.baseurl = '/?page='
-    return render(request, 'home.html', {
-        'questions': page.object_list,
-        'paginator': paginator,
-        'page': page,
-    })
+     return render(request, 'home.html',)
+       
+    # questions = Question.objects.new()
+    # paginator, page = paginate(request, questions)
+    # paginator.baseurl = '/?page='
+    # return render(request, 'home.html', {
+    #     'questions': page.object_list,
+    #     'paginator': paginator,
+    #     'page': page,
+    # })
 
 
 # @require_GET
