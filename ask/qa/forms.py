@@ -8,67 +8,67 @@ from django.shortcuts import get_object_or_404
 from qa.models import Question, Answer, User
 
 
-class AskForm(forms.Form):
-    title = forms.CharField(label="Title", max_length=100,
-                            widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'title'}))
-    text = forms.CharField(label="Question", max_length=500,
-                           widget=forms.Textarea(attrs={'class': 'form-control', 'name': 'text'}))
+# class AskForm(forms.Form):
+#     title = forms.CharField(label="Title", max_length=100,
+#                             widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'title'}))
+#     text = forms.CharField(label="Question", max_length=500,
+#                            widget=forms.Textarea(attrs={'class': 'form-control', 'name': 'text'}))
+#
+#     def clean_title(self):
+#         title = self.cleaned_data['title']
+#         if title.strip() == '':
+#             raise forms.ValidationError('Title is empty', code='validation_error')
+#         if len(title.strip()) < 15:
+#             raise forms.ValidationError('Title is short. Expand the question title.', code='validation_error')
+#         return title
+#
+#     def clean_text(self):
+#         text = self.cleaned_data['text']
+#         if text.strip() == '':
+#             raise forms.ValidationError('Incorrect message', code=12)
+#         if len(text.strip()) < 50:
+#             raise forms.ValidationError('Question is too short. Please, describe your question better.',
+#                                         code='validation_error')
+#         return text
+#
+#     def save(self):
+#         if self._user.is_anonymous():
+#             self.cleaned_data['author_id'] = 1
+#         else:
+#             self.cleaned_data['author'] = self._user
+#         question = Question(**self.cleaned_data)
+#         question.save()
+#         return question
 
-    def clean_title(self):
-        title = self.cleaned_data['title']
-        if title.strip() == '':
-            raise forms.ValidationError('Title is empty', code='validation_error')
-        if len(title.strip()) < 15:
-            raise forms.ValidationError('Title is short. Expand the question title.', code='validation_error')
-        return title
 
-    def clean_text(self):
-        text = self.cleaned_data['text']
-        if text.strip() == '':
-            raise forms.ValidationError('Incorrect message', code=12)
-        if len(text.strip()) < 50:
-            raise forms.ValidationError('Question is too short. Please, describe your question better.',
-                                        code='validation_error')
-        return text
-
-    def save(self):
-        if self._user.is_anonymous():
-            self.cleaned_data['author_id'] = 1
-        else:
-            self.cleaned_data['author'] = self._user
-        question = Question(**self.cleaned_data)
-        question.save()
-        return question
-
-
-class AnswerForm(forms.Form):
-    text = forms.CharField(label="Answer", max_length=500,
-                           widget=forms.Textarea(attrs={'class': 'form-control', 'name': 'text'}))
-    question = forms.IntegerField(widget=forms.HiddenInput)
-
-    def clean_text(self):
-        text = self.cleaned_data['text']
-        if text.strip() == '':
-            raise forms.ValidationError('Text is empty', code='validation_error')
-        if len(text.strip()) < 20:
-            raise forms.ValidationError('Answer is too short. Add more information, please', code='validation_error')
-        return text
-
-    def clean_question(self):
-        question = self.cleaned_data['question']
-        if question == 0:
-            raise forms.ValidationError('Question number incorrect', code='validation_error')
-        return question
-
-    def save(self):
-        self.cleaned_data['question'] = get_object_or_404(Question, pk=self.cleaned_data['question'])
-        if self._user.is_anonymous():
-            self.cleaned_data['author_id'] = 1
-        else:
-            self.cleaned_data['author'] = self._user
-        answer = Answer(**self.cleaned_data)
-        answer.save()
-        return answer
+# class AnswerForm(forms.Form):
+#     text = forms.CharField(label="Answer", max_length=500,
+#                            widget=forms.Textarea(attrs={'class': 'form-control', 'name': 'text'}))
+#     question = forms.IntegerField(widget=forms.HiddenInput)
+#
+#     def clean_text(self):
+#         text = self.cleaned_data['text']
+#         if text.strip() == '':
+#             raise forms.ValidationError('Text is empty', code='validation_error')
+#         if len(text.strip()) < 20:
+#             raise forms.ValidationError('Answer is too short. Add more information, please', code='validation_error')
+#         return text
+#
+#     def clean_question(self):
+#         question = self.cleaned_data['question']
+#         if question == 0:
+#             raise forms.ValidationError('Question number incorrect', code='validation_error')
+#         return question
+#
+#     def save(self):
+#         self.cleaned_data['question'] = get_object_or_404(Question, pk=self.cleaned_data['question'])
+#         if self._user.is_anonymous():
+#             self.cleaned_data['author_id'] = 1
+#         else:
+#             self.cleaned_data['author'] = self._user
+#         answer = Answer(**self.cleaned_data)
+#         answer.save()
+#         return answer
 
 
 class SignupForm(forms.Form):

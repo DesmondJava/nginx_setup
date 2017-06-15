@@ -31,97 +31,97 @@ def home(request):
     })
 
 
-@require_GET
-def popular(request):
-    questions = Question.objects.popular()
-    paginator, page = paginate(request, questions)
-    paginator.baseurl = '/popular/?page='
-    return render(request, 'home.html', {
-        'questions': page.object_list,
-        'paginator': paginator,
-        'page': page,
-    })
+# @require_GET
+# def popular(request):
+#     questions = Question.objects.popular()
+#     paginator, page = paginate(request, questions)
+#     paginator.baseurl = '/popular/?page='
+#     return render(request, 'home.html', {
+#         'questions': page.object_list,
+#         'paginator': paginator,
+#         'page': page,
+#     })
 
 
-@login_required
-def question_detail(request, id):
-    if request.method == "POST":
-        return HttpResponse('OK')
-    question = get_object_or_404(Question, pk=id)
-    answers = question.answer_set.all()
-    form = AnswerForm(initial={'question': str(id)})
-    return render(request, 'question_detail.html', {
-        'question': question,
-        'answers': answers,
-        'form': form,
-    })
+# @login_required
+# def question_detail(request, id):
+#     if request.method == "POST":
+#         return HttpResponse('OK')
+#     question = get_object_or_404(Question, pk=id)
+#     answers = question.answer_set.all()
+#     form = AnswerForm(initial={'question': str(id)})
+#     return render(request, 'question_detail.html', {
+#         'question': question,
+#         'answers': answers,
+#         'form': form,
+#     })
 
 
-@login_required
-def ask(request):
-    if request.method == "POST":
-        form = AskForm(request.POST)
-        if form.is_valid():
-            form._user = request.user
-            question = form.save()
-            url = question.get_url()
-            return HttpResponseRedirect(url)
-    else:
-        form = AskForm()
-    return render(request, 'ask.html', {
-        'form': form
-    })
+# @login_required
+# def ask(request):
+#     if request.method == "POST":
+#         form = AskForm(request.POST)
+#         if form.is_valid():
+#             form._user = request.user
+#             question = form.save()
+#             url = question.get_url()
+#             return HttpResponseRedirect(url)
+#     else:
+#         form = AskForm()
+#     return render(request, 'ask.html', {
+#         'form': form
+#     })
 
 
-@login_required
-def answer(request, id):
-    if request.method == "POST":
-        form = AnswerForm(request.POST)
-        if form.is_valid():
-            form._user = request.user
-            answer = form.save()
-            q_id = answer.question_id
-            question = get_object_or_404(Question, pk=q_id)
-            return HttpResponseRedirect(question.get_url())
-        else:
-            # form = AnswerForm()
-            question = get_object_or_404(Question, pk=id)
-            answers = question.answer_set.all()
-            return render(request, 'question_detail.html', {
-                'form': form,
-                'question': question,
-                'answers': answers,
-            })
+# @login_required
+# def answer(request, id):
+#     if request.method == "POST":
+#         form = AnswerForm(request.POST)
+#         if form.is_valid():
+#             form._user = request.user
+#             answer = form.save()
+#             q_id = answer.question_id
+#             question = get_object_or_404(Question, pk=q_id)
+#             return HttpResponseRedirect(question.get_url())
+#         else:
+#             # form = AnswerForm()
+#             question = get_object_or_404(Question, pk=id)
+#             answers = question.answer_set.all()
+#             return render(request, 'question_detail.html', {
+#                 'form': form,
+#                 'question': question,
+#                 'answers': answers,
+#             })
 
 
-@login_required_ajax
-def rating(request):
-    if request.method == 'POST':
-        changing = request.POST.get('changing')
-        question_id = request.POST.get('question_123')
-        question = get_object_or_404(Question, pk=question_id)
-        user = request.user
-        is_already_give = Question.objects.filter(pk=question_id, likes=user).exists()
-        if is_already_give:
-            return HttpResponseAjaxError(
-                code="bad_params",
-                message="You are not allowed to change rating of this question more than one time"
-            )
-        elif changing == 'plus':
-            question.rating += 1
-            question.likes.add(user)
-            question.save()
-            return HttpResponseAjax(message="success, rating successfully is changed.")
-        elif changing == 'minus':
-            question.rating -= 1
-            question.likes.add(user)
-            question.save()
-            return HttpResponseAjax(message="Ah ti ebaniy shashlik, nahuya minusuesh?")
-        else:
-            return HttpResponseAjaxError(
-                code="bad_params",
-                message="something went wrong! Please contact developer about this message. Thanks"
-            )
+# @login_required_ajax
+# def rating(request):
+#     if request.method == 'POST':
+#         changing = request.POST.get('changing')
+#         question_id = request.POST.get('question_123')
+#         question = get_object_or_404(Question, pk=question_id)
+#         user = request.user
+#         is_already_give = Question.objects.filter(pk=question_id, likes=user).exists()
+#         if is_already_give:
+#             return HttpResponseAjaxError(
+#                 code="bad_params",
+#                 message="You are not allowed to change rating of this question more than one time"
+#             )
+#         elif changing == 'plus':
+#             question.rating += 1
+#             question.likes.add(user)
+#             question.save()
+#             return HttpResponseAjax(message="success, rating successfully is changed.")
+#         elif changing == 'minus':
+#             question.rating -= 1
+#             question.likes.add(user)
+#             question.save()
+#             return HttpResponseAjax(message="Ah ti ebaniy shashlik, nahuya minusuesh?")
+#         else:
+#             return HttpResponseAjaxError(
+#                 code="bad_params",
+#                 message="something went wrong! Please contact developer about this message. Thanks"
+#             )
 
 
 def user_signup(request):
