@@ -21,7 +21,7 @@ def test(request, *args, **kwargs):
 @require_GET
 def home(request):
      return render(request, 'home.html',)
-       
+
     # questions = Question.objects.new()
     # paginator, page = paginate(request, questions)
     # paginator.baseurl = '/?page='
