@@ -57,9 +57,9 @@ class Host(models.Model):
     eea_sqm_gui_link = models.TextField()
     database = models.TextField()
     utf8 = models.TextField()
-    last_update = models.DateTimeField(auto_now_add=True)
     owner = models.TextField()
     comments = models.TextField()
+    last_update = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
         return self.text
