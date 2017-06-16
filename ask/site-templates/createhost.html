@@ -17,11 +17,11 @@
                         </td>
                         <td>
                             <select class="form-control" id="sel1">
-                                {% for value in form.table_name %}
-                                <option value="Test1">yo1 </option>
-                                <option value="{{ value }}"> </option>
+                                {% for key, value in form.table_name.choices %}
+
+                                <option value="{{ key }}">{{ value }} </option>
                                 {% endfor %}
-                                
+
                                 <!--{% for value in form.table_name %}-->
                                     <!--<option value="{{ value }}"> </option>-->
                                 <!--{% endfor %}-->
