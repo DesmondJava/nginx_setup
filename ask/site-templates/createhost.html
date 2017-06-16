@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+p {
+    margin-left: 2cm;
+}
 
 <div class="container">
     <h2 class="text-center">Create new Host</h2>
 
-    <div class="panel-body">
-        <form method="post" action="/ask/">
+    <div class="panel-body" style="">
+        <form method="post" action="/ask/" style="margin: 2cm;">
         {% csrf_token %}
-            <p class="bs-component">
+            <p class="bs-component" style="margin: 2cm;">
                 <table>
                     <tr>
                         <td>

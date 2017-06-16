@@ -14,6 +14,8 @@ from qa.utils.viewhelpers import paginate
 
 from qa.forms import HostForm
 
+from qa.models import Host
+
 
 @require_GET
 def test(request, *args, **kwargs):
@@ -22,7 +24,10 @@ def test(request, *args, **kwargs):
 
 @require_GET
 def home(request):
-     return render(request, 'home.html',)
+     hosts = Host.objects.new()
+     return render(request, 'home.html', {
+         'hosts': hosts.object_list,
+     })
 
     # questions = Question.objects.new()
     # paginator, page = paginate(request, questions)

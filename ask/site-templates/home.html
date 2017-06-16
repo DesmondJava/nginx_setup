@@ -32,13 +32,25 @@
             </tr>
         </thead>
     <tbody>
-    {% for question in questions %}
-        <tr class="table-row" onclick="window.document.location='{{ question.get_url }}';" style="cursor: pointer;" data-href="{{ question.get_url }}">
-        <td class="col-md-6"><a href="{{ question.get_url }}" style="text-decoration: none">{{ question }}</a></td>
-        <td class="col-md-3 text-center">{{ question.added_at|date:'Y-m-d H:i' }}</td>
-        <td class="col-md-1 text-center">{{ question.rating }}</td>
-        <td class="col-md-2 text-center">{{ question.author }}</td>
-    
+    {% for host in hosts %}
+        <tr class="table-row" onclick="window.document.location='{{ host.get_url }}';" style="cursor: pointer;" data-href="{{ host.get_url }}">
+        <td class="col-md-1 text-center">{{ host.eea_sqm }}</td>
+        <td class="col-md-1 text-center">{{ host.iSecure }}</td>
+        <td class="col-md-6"><a href="{{ host.get_url }}" style="text-decoration: none">{{ host }}</a></td>
+        <td class="col-md-1 text-center">{{ host.dev_pt }}</td>
+        <td class="col-md-1 text-center">{{ host.hardware_model }}</td>
+        <td class="col-md-1 text-center">{{ host.hardware_cpuram }}</td>
+        <td class="col-md-1 text-center">{{ host.os }}</td>
+        <td class="col-md-1 text-center">{{ host.oracle }}</td>
+        <td class="col-md-1 text-center">{{ host.iSecure_link }}</td>
+        <td class="col-md-1 text-center">{{ host.sqm_link }}</td>
+        <td class="col-md-1 text-center">{{ host.svc_mgmt_link }}</td>
+        <td class="col-md-1 text-center">{{ host.eea_sqm_gui_link }}</td>
+        <td class="col-md-1 text-center">{{ host.database }}</td>
+        <td class="col-md-1 text-center">{{ host.utf8 }}</td>
+        <td class="col-md-1 text-center">{{ host.last_update|date:'Y-m-d H:i' }}</td>
+        <td class="col-md-1 text-center">{{ host.owner }}</td>
+        <td class="col-md-1 text-center">{{ host.comments }}</td>
     </tr>
     {% endfor %}
     </tbody>
