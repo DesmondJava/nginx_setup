@@ -80,8 +80,7 @@ def createhost(request):
     if request.method == "POST":
         form = HostForm(request.POST)
         if form.is_valid():
-            form._user = request.user
-            host = form.save()
+            form.save()
             return HttpResponseRedirect('/')
     else:
         form = HostForm()

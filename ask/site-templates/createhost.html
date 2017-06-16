@@ -29,30 +29,200 @@
                         {% endfor %}
                         </td>
                     </tr>
-
-
                     <tr>
-                        <td>{{ form.title.label_tag }}</td>
-                        <td>{{ form.title }}</td>
+                        <td>{{ form.host_name.label_tag }}</td>
+                        <td>{{ form.host_name }}</td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            {% if form.title.errors %}
-                                 {{ form.title.errors }}
+                            {% if form.host_name.errors %}
+                                 {{ form.host_name.errors }}
                             {% endif %}
                         </td>
                     </tr>
                     <tr>
-                        <td>{{ form.text.label_tag }}</td>
-                        <td>{{ form.text }}</td>
+                        <td>{{ form.eea_sqm.label_tag }}</td>
+                        <td>{{ form.eea_sqm }}</td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            {% if form.text.errors %}
-                                 {{ form.text.errors }}
+                            {% if form.eea_sqm.errors %}
+                                 {{ form.eea_sqm.errors }}
                             {% endif %}
                         </td>
                     </tr>
+
+                    <tr>
+                        <td>{{ form.iSecure.label_tag }}</td>
+                        <td>{{ form.iSecure }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            {% if form.iSecure.errors %}
+                                 {{ form.iSecure.errors }}
+                            {% endif %}
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td>{{ form.dev_pt.label_tag }}</td>
+                        <td>{{ form.dev_pt }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            {% if form.dev_pt.errors %}
+                                 {{ form.dev_pt.errors }}
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>{{ form.hardware_model.label_tag }}</td>
+                        <td>{{ form.hardware_model }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            {% if form.hardware_model.errors %}
+                                 {{ form.hardware_model.errors }}
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>{{ form.hardware_cpuram.label_tag }}</td>
+                        <td>{{ form.hardware_cpuram }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            {% if form.hardware_cpuram.errors %}
+                                 {{ form.hardware_cpuram.errors }}
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>{{ form.os.label_tag }}</td>
+                        <td>{{ form.os }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            {% if form.os.errors %}
+                                 {{ form.os.errors }}
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>{{ form.oracle.label_tag }}</td>
+                        <td>{{ form.oracle }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            {% if form.oracle.errors %}
+                                 {{ form.oracle.errors }}
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>{{ form.iSecure_link.label_tag }}</td>
+                        <td>{{ form.iSecure_link }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            {% if form.iSecure_link.errors %}
+                                 {{ form.iSecure_link.errors }}
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>{{ form.sqm_link.label_tag }}</td>
+                        <td>{{ form.sqm_link }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            {% if form.sqm_link.errors %}
+                                 {{ form.sqm_link.errors }}
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>{{ form.svc_mgmt_link.label_tag }}</td>
+                        <td>{{ form.svc_mgmt_link }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            {% if form.svc_mgmt_link.errors %}
+                                 {{ form.svc_mgmt_link.errors }}
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>{{ form.eea_sqm_gui_link.label_tag }}</td>
+                        <td>{{ form.eea_sqm_gui_link }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            {% if form.eea_sqm_gui_link.errors %}
+                                 {{ form.eea_sqm_gui_link.errors }}
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>{{ form.database.label_tag }}</td>
+                        <td>{{ form.database }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            {% if form.database.errors %}
+                                 {{ form.database.errors }}
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>{{ form.utf8.label_tag }}</td>
+                        <td>{{ form.utf8 }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            {% if form.utf8.errors %}
+                                 {{ form.utf8.errors }}
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>{{ form.owner.label_tag }}</td>
+                        <td>{{ form.owner }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            {% if form.owner.errors %}
+                                 {{ form.owner.errors }}
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>{{ form.comments.label_tag }}</td>
+                        <td>{{ form.comments }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            {% if form.comments.errors %}
+                                 {{ form.comments.errors }}
+                            {% endif %}
+                        </td>
+                    </tr>
+
+
                     <tr>
             </p>
                         <td colspan="2">
