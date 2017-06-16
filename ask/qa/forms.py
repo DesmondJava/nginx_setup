@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import get_object_or_404
 
-from ask.qa.models import Host
+from qa.models import Host
 
 TABLE_NAMES = (
     ('1', 'Current Development & PT Environment'),
