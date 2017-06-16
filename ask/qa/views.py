@@ -26,7 +26,7 @@ def test(request, *args, **kwargs):
 def home(request):
      hosts = Host.objects.all()
      return render(request, 'home.html', {
-         'hosts': hosts.object_list,
+         'hosts': hosts,
      })
 
     # questions = Question.objects.new()
