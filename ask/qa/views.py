@@ -24,7 +24,7 @@ def test(request, *args, **kwargs):
 
 @require_GET
 def home(request):
-     hosts = Host.objects.new()
+     hosts = Host.objects.all()
      return render(request, 'home.html', {
          'hosts': hosts.object_list,
      })
