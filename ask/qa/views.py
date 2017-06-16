@@ -12,7 +12,7 @@ from qa.forms import SignupForm
 from qa.utils.ajax import HttpResponseAjax, HttpResponseAjaxError, login_required_ajax
 from qa.utils.viewhelpers import paginate
 
-from ask.qa.forms import HostForm
+from qa.forms import HostForm
 
 
 @require_GET
