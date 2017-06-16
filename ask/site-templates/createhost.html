@@ -13,20 +13,14 @@
                 <table>
                     <tr>
                         <td>
-
+                            {{ form.table_name.label_tag }}
                         </td>
                         <td>
-                        {% for field in form.table_name %}
-                            <div class="col-md-12 dropdown">
-                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                                    {{ field.label_tag }}
-                                    <span class="caret"></span>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <div><a href="#">{{ field }}</a></div>
-                                </div>
-                            </div>
-                        {% endfor %}
+                            <select class="form-control" id="sel1">
+                                {% for field in form.table_name %}
+                                    <option>{{ field }}</option>
+                                {% endfor %}
+                            </select>
                         </td>
                     </tr>
                     <tr>
