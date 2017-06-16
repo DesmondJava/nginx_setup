@@ -153,7 +153,7 @@ class SignupForm(forms.Form):
         password = self.cleaned_data['password']
         if password.strip() == '':
             raise forms.ValidationError('Password is empty', code='validation_error')
-        if not re.match(r"^(?=.*?\d)(?=.*?[A-Z])(?=.*?[a-z])[A-Za-z\d]{10,}$", password):
+        if not re.match(r"^(?=.*?\d)(?=.*?[A-Z])(?=.*?[a-z])[A-Za-z\d]{5,}$", password):
             raise forms.ValidationError('Password must be security! Try another, please.', code='validation_error')
         return password
 
