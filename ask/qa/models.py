@@ -62,7 +62,7 @@ class Host(models.Model):
     last_update = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
-        return self.text
+        return self.host_name
 
     def get_url(self):
         return "/host/{}/".format(self.id)
