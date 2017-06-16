@@ -12,8 +12,8 @@ TABLE_NAMES = (
     ('1', 'Current Development and PT Environment'),
     ('2', 'Previous Release Environments'),
     ('3', 'Open Releases'),
-    ('3', 'GAed Releases'),
-    ('3', 'Servers to be Retired'),
+    ('4', 'GAed Releases'),
+    ('5', 'Servers to be Retired'),
 )
 
 class HostForm(forms.Form):
