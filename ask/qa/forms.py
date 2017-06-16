@@ -17,7 +17,7 @@ TABLE_NAMES = (
 )
 
 class HostForm(forms.Form):
-    table_name = forms.ChoiceField(choices=TABLE_NAMES, label="Type/table name")
+    table = forms.ChoiceField(choices=TABLE_NAMES, label="Table")
     host_name = forms.CharField(label="Host name", max_length=100,
                             widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'title'}))
     eea_sqm = forms.CharField(label="EEA-SQM", max_length=100,

@@ -16,15 +16,10 @@
                             {{ form.table_name.label_tag }}
                         </td>
                         <td>
-                            <select class="form-control" id="sel1">
-                                {% for key, value in form.table_name.choices %}
-
-                                    {{ value }}
-                                {% endfor %}
-
-                                <!--{% for value in form.table_name %}-->
-                                    <!--<option value="{{ value }}"> </option>-->
-                                <!--{% endfor %}-->
+                            <select id="id_Table" name="table">
+                            {% for x,y in form.fields.table.choices %}
+                                <option value="{{ x }}">{{ y }}</option>
+                            {% endfor %}
                             </select>
                         </td>
                     </tr>
