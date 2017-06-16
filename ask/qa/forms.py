@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from qa.models import Host
 
 TABLE_NAMES = (
-    ('1', 'Current Development & PT Environment'),
+    ('1', 'Current Development and PT Environment'),
     ('2', 'Previous Release Environments'),
     ('3', 'Open Releases'),
     ('3', 'GAed Releases'),
