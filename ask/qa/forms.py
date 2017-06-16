@@ -149,14 +149,6 @@ class SignupForm(forms.Form):
             raise forms.ValidationError('Please, use minimum 3 characters for your name', code='validation_error')
         return username
 
-    def clean_email(self):
-        email = self.cleaned_data['email']
-        if email.strip() == '':
-            raise forms.ValidationError('Email is empty')
-        if not re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", email):
-            raise forms.ValidationError('Email is not valid! Correct email and send again.')
-        return email
-
     def clean_password(self):
         password = self.cleaned_data['password']
         if password.strip() == '':
