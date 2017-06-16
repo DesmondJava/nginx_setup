@@ -42,7 +42,7 @@ from django.db import models
 #         return self.text
 
 class Host(models.Model):
-    table_name = models.TextField()
+    table = models.TextField()
     host_name = models.TextField()
     eea_sqm = models.TextField()
     iSecure = models.TextField()
