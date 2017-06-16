@@ -60,8 +60,6 @@ class HostForm(forms.Form):
         return host_name
 
     def save(self):
-        if self._user.is_anonymous():
-            return
         host = Host(**self.cleaned_data)
         host.save()
         return host
