@@ -17,8 +17,8 @@
                         </td>
                         <td>
                             <select class="form-control" id="sel1">
-                                {% for value,text in form.table_name.choices %}
-                                    <option value="{{ value }}">{{ text }}</option>
+                                {% for value in form.table_name %}
+                                    <option value="{{ value }}">{{ value }}</option>
                                 {% endfor %}
                             </select>
                         </td>
