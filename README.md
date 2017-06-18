@@ -2,10 +2,10 @@
 
 I am using ubuntu 64 bit - 17.04, Python 2.7.13, Django - 1.11.2 final
 
-Preconfiguration on clear Linux Ubuntu:
+Preconfiguration on clean Linux Ubuntu:
 1. install mysql:  
 sudo apt-get update  
-sudo apt-get install mysql-server  
+sudo apt-get install mysql-server (type empty password for root user)  
 sudo apt-get install libmysqlclient-dev   
 2. install nginx server:  
 sudo apt-get install nginx  
